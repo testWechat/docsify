@@ -1,4 +1,4 @@
-![logo](_media/weixin.jpg)
+<img src="_media/weixin.jpg" alt="曾经蜡笔么有小信" style="border-radius:100%;" />
 
 # 曾经蜡笔么有小信
 
