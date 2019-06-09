@@ -18,6 +18,8 @@
 	* [常用组件/插件](weixinh5/常用组件插件.md)
 	* [less入门](weixinh5/less入门文档.md)
 	* [ECMAScript文档](https://es6.ruanyifeng.com/)
+	* [PageSlider移动端滑屏组件](https://github.com/weixin/PageSlider)
+	
 
 * [gulp](gulp/README.md) 
 	* [gulp自动化构建工具入门教程](gulp/gulp自动化构建工具入门教程.md) 
