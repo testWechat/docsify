@@ -19,7 +19,8 @@
 	* [less入门](weixinh5/less入门文档.md)
 	* [ECMAScript文档](https://es6.ruanyifeng.com/)
 	* [PageSlider移动端滑屏组件](https://github.com/weixin/PageSlider)
-	
+	* [优秀的博客](weixinh5/优秀的博客.md)
+
 
 * [gulp](gulp/README.md) 
 	* [gulp自动化构建工具入门教程](gulp/gulp自动化构建工具入门教程.md) 
@@ -32,7 +33,7 @@
 
 * [工具](tool/README.md) 
 	* [内网穿透—外网可以访问到本地页面](tool/内网穿透—外网可以访问到本地页面.md) 
-	* [Markdown 简明语法手册](tool/Markdown简明语法手册.md) 
+	* [Markdown 简明语法手册](tool/Markdown简明语法手册.md)
 
 
 
