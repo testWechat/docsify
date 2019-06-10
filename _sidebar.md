@@ -20,6 +20,7 @@
 	* [ECMAScript文档](https://es6.ruanyifeng.com/)
 	* [PageSlider移动端滑屏组件](https://github.com/weixin/PageSlider)
 	* [优秀的博客](weixinh5/优秀的博客.md)
+	* [移动端页面开发资源总结](weixinh5/移动端页面开发资源总结.md)
 
 
 * [gulp](gulp/README.md) 
