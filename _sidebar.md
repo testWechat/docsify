@@ -21,6 +21,8 @@
 	* [PageSlider移动端滑屏组件](https://github.com/weixin/PageSlider)
 	* [优秀的博客](weixinh5/优秀的博客.md)
 	* [移动端页面开发资源总结](weixinh5/移动端页面开发资源总结.md)
+	* [Javascript封装PHP方法get](weixinh5/Javascript封装PHP方法get.md)
+	* [h5input输入键盘自动隐藏](weixinh5/h5input输入键盘自动隐藏.md)
 
 
 * [gulp](gulp/README.md) 
