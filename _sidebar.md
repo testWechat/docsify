@@ -23,7 +23,8 @@
 	* [移动端页面开发资源总结](weixinh5/移动端页面开发资源总结.md)
 	* [Javascript封装PHP方法get](weixinh5/Javascript封装PHP方法get.md)
 	* [h5input输入键盘自动隐藏](weixinh5/h5input输入键盘自动隐藏.md)
-	* [Flex 布局新旧混合写法详解（兼容微信）](weixinh5/Flex 布局新旧混合写法详解（兼容微信）.md)
+	* [Flex布局新旧混合写法详解（兼容微信）](weixinh5/Flex布局新旧混合写法详解（兼容微信）.md)
+	* [css-reset](weixinh5/css-reset.md)
 
 
 * [php](php/README.md) 
