@@ -23,6 +23,7 @@
 	* [移动端页面开发资源总结](weixinh5/移动端页面开发资源总结.md)
 	* [Javascript封装PHP方法get](weixinh5/Javascript封装PHP方法get.md)
 	* [h5input输入键盘自动隐藏](weixinh5/h5input输入键盘自动隐藏.md)
+	* [Flex 布局新旧混合写法详解（兼容微信）](weixinh5/Flex 布局新旧混合写法详解（兼容微信）.md)
 
 
 * [gulp](gulp/README.md) 
@@ -37,6 +38,7 @@
 * [工具](tool/README.md) 
 	* [内网穿透—外网可以访问到本地页面](tool/内网穿透—外网可以访问到本地页面.md) 
 	* [Markdown 简明语法手册](tool/Markdown简明语法手册.md)
+	* [DosLsp修复](tool/Dos—Lsp修复.md)
 
 
 
