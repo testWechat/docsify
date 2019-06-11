@@ -26,6 +26,9 @@
 	* [Flex 布局新旧混合写法详解（兼容微信）](weixinh5/Flex 布局新旧混合写法详解（兼容微信）.md)
 
 
+* [php](php/README.md) 
+	* [php过滤微信昵称中的表情](php/过滤微信昵称.md) 
+	
 * [gulp](gulp/README.md) 
 	* [gulp自动化构建工具入门教程](gulp/gulp自动化构建工具入门教程.md) 
 
