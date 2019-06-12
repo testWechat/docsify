@@ -6,6 +6,7 @@
 	* [一个精巧、易用的微信小程序开发辅助库](weixinapplet/微信小程序开发辅助库.md) 
 	* [微信小程序模版消息](weixinapplet/微信小程序模版消息.md)  
 	* [微信小程序海报生成](weixinapplet/微信小程序海报生成.md) 
+	* [微信小程序原生开发常用方法封装](weixinapplet/微信小程序原生开发常用方法封装.md) 
 
 
 * [微信H5](weixinh5/README.md) 
