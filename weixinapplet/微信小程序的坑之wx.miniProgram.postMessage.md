@@ -1,6 +1,6 @@
 查阅[小程序官方文档](https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html?search-key=wx.miniProgram.postMessage)，有这样一个接口 `wx.miniProgram.postMessage` ，可以用来从网页向小程序发送消息，然后通过 `bindmessage` 事件来监听消息，如下是官方文档描述
 
-![clipboard.png](https://segmentfault.com/img/bVbii6U?w=1193&h=499)
+![clipboard.png](../_media/403726539-5bc708dee6924_articlex.png)
 
 以下是代码：
 

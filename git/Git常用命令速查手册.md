@@ -1,6 +1,5 @@
 > **Git的四个组成部分**
 
-![img](http://upload-images.jianshu.io/upload_images/1049928-f72357a8bfddc6d2.png)
 
 1、初始化仓库
 

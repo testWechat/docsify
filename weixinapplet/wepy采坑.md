@@ -4,8 +4,6 @@ wepy是一个微信小程序框架，支持模块化开发，开发风格类似V
 
 ## 目录结构：
 
-![img](http://upload-images.jianshu.io/upload_images/8553499-0b07271886b24401.png)
-
 `pages`: 存放主页面
 `sotre`: redux(如果你创建项目时使用了`redux`的话)
 `components`: 存放组件

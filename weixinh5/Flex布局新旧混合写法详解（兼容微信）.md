@@ -261,7 +261,8 @@ box-direction 属性使用一个整数值：
 }
 ```
 
-[![box-pack](https://segmentfault.com/img/remote/1460000011404759)](/__media/fx01.png)
+
+![](../_media/fx01.png)
 
 这里旧版语法有 4 个参数，而新版语法有 5 个参数，兼容写法新版语法的 `space-around` 是不可用的：
 
@@ -286,7 +287,8 @@ box-direction 属性使用一个整数值：
 }
 ```
 
-[![box-align](https://segmentfault.com/img/remote/1460000011404760)](/__media//fx03.png)
+
+![](../_media/fx03.png)
 
 这里的参数除了写法不同，其实是功能是一样的：
 
@@ -316,7 +318,7 @@ box-direction 属性使用一个整数值：
 }
 ```
 
-[![flex-direction](https://segmentfault.com/img/remote/1460000011404761)](/__media//fx051.png)
+![](../_media/fx051.png)
 
 #### 右到左
 
@@ -333,7 +335,8 @@ box-direction 属性使用一个整数值：
 
 这里补充说明一点： box 写法的 `box-direction` 只是改变了子元素的排序，并没有改变对齐方式，需要新增一个 `box-pack` 来改变对齐方式。
 
-[![box-orient: vertical](https://segmentfault.com/img/remote/1460000011404762)](/__media//fx02.png)
+
+![](../_media/fx02.png)
 
 #### 上到下
 
@@ -347,7 +350,8 @@ box-direction 属性使用一个整数值：
 }
 ```
 
-[![box-orient: vertical](https://segmentfault.com/img/remote/1460000011404763)](/__media//fx06.png)
+![](../_media/fx06.png)
+
 
 #### 下到上
 
@@ -362,7 +366,7 @@ box-direction 属性使用一个整数值：
 }
 ```
 
-[![box-orient: vertical](https://segmentfault.com/img/remote/1460000011404764)](/__media//fx04.png)
+![](../_media/fx04.png)
 
 ### 是否允许子元素伸缩
 
@@ -375,7 +379,7 @@ box-direction 属性使用一个整数值：
 }
 ```
 
-[![flex](https://segmentfault.com/img/remote/1460000011404765)](/__media//fx10.png)
+![](../_media/fx10.png)
 
 ```
 .item{
@@ -386,19 +390,19 @@ box-direction 属性使用一个整数值：
 }
 ```
 
-[![fx15](https://segmentfault.com/img/remote/1460000011404766)](/__media//fx15.png)
+![](../_media/fx15.png)
 
 上面是允许放大，box语法中 `box-flex` 如果不是 0 就表示该子元素允许伸缩，而 flex 是分开的，上面 `flex-grow` 是允许放大（默认不允许），下面的 `flex-shrink` 是允许缩小（默认允许）。`box-flex` 默认值为 0 ，也就是说，在默认的情况下，在两个浏览器中的表现是不一样的：
 
-[![flex](https://segmentfault.com/img/remote/1460000011404767)](/__media//fx11.png)
+![](../_media/fx11.png)
 
 这里还有一点，就是新旧语法的算法是不一样的，假设 `box-flex` 的值不等于 0 ，旧语法中，如果有多余的空间，`box-flex` 的值越大，说明空白部分的占比越多，反之亦然：
 
-[![flex](https://segmentfault.com/img/remote/1460000011404768)](/__media//fx13.png)
+![](../_media/fx13.png)
 
 而新版的语法中，放大的比例是直接按 `flex-grow` 的值来分配的，`flex-grow` 的缩放会覆盖 `flex-shrink: 0`，看例子：
 
-[![flex](https://segmentfault.com/img/remote/1460000011404769)](/__media//fx14.png)
+![](../_media/fx14.png)
 
 参数：
 
@@ -426,4 +430,4 @@ box-direction 属性使用一个整数值：
 }
 ```
 
-[![flex](https://segmentfault.com/img/remote/1460000011404770)](/__media//fx16.png)
+![](../_media/fx16.png)
