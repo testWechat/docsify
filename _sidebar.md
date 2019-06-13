@@ -7,6 +7,7 @@
 	* [微信小程序模版消息](weixinapplet/微信小程序模版消息.md)  
 	* [微信小程序海报生成](weixinapplet/微信小程序海报生成.md) 
 	* [微信小程序原生开发常用方法封装](weixinapplet/微信小程序原生开发常用方法封装.md) 
+	* [微信小程序的坑之wx.miniProgram.postMessage](weixinapplet/微信小程序的坑之wx.miniProgram.postMessage.md) 
 
 
 * [微信H5](weixinh5/README.md) 
