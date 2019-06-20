@@ -27,6 +27,8 @@
 	* [h5input输入键盘自动隐藏](weixinh5/h5input输入键盘自动隐藏.md)
 	* [Flex布局新旧混合写法详解（兼容微信）](weixinh5/Flex布局新旧混合写法详解（兼容微信）.md)
 	* [css-reset](weixinh5/css-reset.md)
+	* [canvas多行文本](weixinh5/canvas多行文本.md)
+	* [canvas绘图模式](weixinh5/canvas绘图模式.md)
 
 
 * [php](php/README.md) 
