@@ -2,14 +2,18 @@
 
 # 曾经蜡笔么有小信
 
-> 技术文章记录博客
+#### ♥ 请不要在家长陪同下观看 ♥
 
-* Q Q : 746979855
-* 邮箱 : 13335309435@qq.com	，linuxzhixin@gmail.com
-* 「WeChat：13335309435」
+
+[![](_media/weibo.png)](https://weibo.com/Linuxzhixin)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![](_media/qq.png)](http://wpa.qq.com/msgrd?v=3&uin=1648104226&site=qq&menu=yes)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![](_media/gmail.png)](Mailto:linuxzhixin@gmail.com)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+[![](_media/wx.png)](/?id=前言)
+
 
 [GitHub](https://github.com/aweixin/aweixin.github.io)
 
 
+![](_media/background.jpeg)
 
 
