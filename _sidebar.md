@@ -14,6 +14,7 @@
 	* [使用 exif.js 和 html2canvas 遇到的问题](weixinh5/使用exif.js和html2canvas遇到的问题.md)	
 	* [Canvas 生成海报跨域](weixinh5/canvas生成海报跨域.md)
 	* [rem.js 移动端自适应](weixinh5/rem.js移动端自适应.md)
+	* [ydui_flexible适配](weixinh5/ydui_flexible适配.md)
 	* [利用Html5 Canvas前端进行图片压缩](weixinh5/Canvas前端进行图片压缩.md)
 	* [Flex 布局](weixinh5/Flex布局.md)
 	* [框架/库](weixinh5/框架库.md)
