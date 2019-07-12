@@ -8,6 +8,85 @@
 
 ![](_media/weixin.png)
 
+
+
+## vue使用keep-alive
+
+>到现在，接触vue也小段时间了，项目进行到了一定程度，然而项目缺少了缓存机制，所以每次跳转页面都会重新created一下数据，虽说系统的数据请求速度很快，但是这样做对系统的性能会有很大的坏处的，所以到这里就要对系统优化下，添加缓存了。
+
+>其实到现在，对于vue还是没有玩通，每深挖一次，就会发现一次vue的精彩，开始不清楚要用什么实现缓存，找了好久，有好几种说法，就是用vuex、vuet或者keep-alive，然后对比了一下，在我认为，vuex和vuet是实现状态管理，重心是在数据处理上；想要实现整体的缓存，阻止created的刷新，就要用keep-alive。
+
+>所以这里我想要给大家介绍下如何用keep-alive实现缓存的页面？其实很简单，就是几句话而已。
+
+
+
+
+
+
+1、keep-alive要配合router-view使用，这里要注意一点就是，`keep-alive`本身是vue2.0的功能，并不是`vue-router`的，所以再vue1.0版本是不支持的。keep-alive官方文档点这里，代码实现如下，router-view是在入口APP.vue里面
+```javascript
+<template>
+  <div id="app">
+
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    
+    <!--这里是其他的代码-->
+  </div>
+</template>
+```
+2、这样就会实现组件的缓存，但是有个缺点就是所有组件都会被缓存，可是现实中就是我们有些页面还是要及时刷新的，比如列表数据，想要查看详情的时候都是共用一个组件，只是刷新页面，所以这个共用的组件是不能够缓存的，不然会造成点其他的条目都是之前缓存的数据。那要怎么自定义呢，那就要在`router-view`里面多加个`v-if`判断了，然后在`router`定义的文件里面在想要缓存的页面多加上`meta:{keepAlive:true}`，不想要缓存就是`meta:{keepAlive:false}`或者不写，只有为`true`的时候是会被`keep-alive`识别然后缓存的。
+```javascript
+<template>
+  <div id="app">
+    <!--缓存想要缓存的页面，实现后退不刷新-->
+    <!--加上v-if的判断，可以自定义想要缓存的组件，自定义在router里面-->
+    <keep-alive>
+      <router-view v-if="$route.meta.keepAlive"></router-view>
+    </keep-alive>
+    <router-view v-if="!$route.meta.keepAlive"></router-view>
+    
+    <!--这里是其他的代码-->
+  </div>
+</template>
+```
+3、在router文件加上meta判断
+```javascript
+import Vue from 'vue'
+import Router from 'vue-router'
+
+Vue.use(Router)
+export default new Router({
+    {//home会被缓存
+        path:"/home",
+        component:home,
+        meta:{keepAlive: true}
+    }
+    {//hello不会被缓存
+        path:"/hello",
+        component:hello,
+        meta:{keepAlive: false}
+    }
+})
+```
+想要看有没有缓存成功，可以在各个组件的created钩子里面打印输出标志，缓存成功就是首次进入页面，created会请求数据，后面就不会再次请求而是直接调用缓存的
+
+添加了缓存可以大大减少对系统性能的损坏，毕竟做数据处理型的系统，数据过于庞大，每次都要请求一下页面是很不好的，有了缓存，该缓存的缓存，不想缓存也可以实时刷新
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ## 微信小程序less 编译
 
 > 微信小程序只支持原生css写法，但是前端开发less和sass已经很普及。
@@ -505,7 +584,7 @@ this.$data.$set(this.$data, ‘b’, 2)
 
    当页面进入后台态（用户不可见），不应该继续去进行`setData`，后台态页面的渲染用户是无法感受的，另外后台态页面去`setData`也会抢占前台页面的执行。当页面进入后台时，grace会自动停止数据更新，当页面再次转到前台时会自动开启渲染，而无需您手动去切换。
 
-## Http
+### Http
 
 Grace通过Promise封装了wx.request， 并支持拦截器、请求配置等：
 
@@ -585,7 +664,7 @@ grace.http.interceptors.request.use((config, promise) => {
 export default grace;
 ```
 
-## 事件总线
+### 事件总线
 
 全局事件总线可以在全局（跨页面）触发、监听事件。
 
@@ -620,7 +699,7 @@ this.$bus.$off(“eventName”,handler)
 
 **注意，全局只有一个$bus实例，您也可以使用 grace.bus 替代 this.$bus.**
 
-## 跨页面传值
+### 跨页面传值
 
 在小程序中打开新页面时可以通过url的query向新页面传值，这很容易，如：
 
@@ -662,7 +741,7 @@ grace.page({
 
 `delta` 意义同 `wx.navigateBack`参数的delta, 表示回退的页面数，默认为1（上一页），如果如果 delta 大于现有页面数，则返回到首页。
 
-## mixin
+### mixin
 
 混入 (mixins) 是一种分发页面（Page）可复用功能的非常灵活的方式。简而言之，他可以在小程序创建页面时，混合页面选项，可以实现给所有页面添加一些钩子的功能，如果还不理解，不要紧，下面来看一个例子：
 
@@ -2619,7 +2698,7 @@ var $_GET = (function () {
 
 我只列出代码，详细的语法解释请查阅[《Flex布局教程：语法篇》](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)。我的主要参考资料是[Landon Schropp](http://davidwalsh.name/flexbox-dice)的文章和[Solved by Flexbox](http://philipwalton.github.io/solved-by-flexbox/)。
 
-## 一、骰子的布局
+### 一、骰子的布局
 
 骰子的一面，最多可以放置9个点。
 
@@ -3063,7 +3142,7 @@ CSS代码如下。
 > }
 > ```
 
-## 四、输入框的布局
+### 四、输入框的布局
 
 我们常常需要在输入框的前方添加提示，后方添加按钮。
 
@@ -3091,7 +3170,7 @@ CSS代码如下。
 > }
 > ```
 
-## 五、悬挂式布局
+### 五、悬挂式布局
 
 有时，主栏的左侧或右侧，需要添加一个图片栏。
 

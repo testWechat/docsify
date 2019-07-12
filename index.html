@@ -15,10 +15,10 @@
 
   <script>
     window.$docsify = {
-		//	loadSidebar: true,
-		auto2top: true,  
-		autoHeader: true,
-		name: '曾经蜡笔么有小信',  
+		loadSidebar: true,
+		//	auto2top: true,  
+		//	autoHeader: true,
+		//	name: '曾经蜡笔么有小信',  
 		disqus: 'shortname',
 		repo: 'https://github.com/aweixin/aweixin.github.io',
 		coverpage: true,
@@ -26,23 +26,23 @@
 		loadNavbar: true,
 		mergeNavbar: true,
 		routerMode: 'hash', // default: 'hash'
-		subMaxLevel:4,
-		 //搜索配置项
-      search: {
-        paths: 'auto', // or 'auto'
-        placeholder: '搜索',
-        noData: '找不到结果',
-        // 搜索标题的最大程级, 1 - 6
-        depth: 6
-      }
+		subMaxLevel:2,
+		search: {
+			noData: {
+				'/': 'No results!'
+			},
+			paths: 'auto',
+			placeholder: {
+				'/': 'Search'
+			}
+		},
   }
   </script>
 	<script src="./lib/docsify.min.js"></script>
 	<script src="./lib/docsify-copy-code.min.js"></script>
 	<script src="./lib/zoom-image.js"></script>
 	<script src="./lib/disqus.min.js"></script>
-	
-  <script src="./lib/search.min.js"></script>
+	<script src="./lib/search.min.js"></script>
 
 </body>
 </html>
