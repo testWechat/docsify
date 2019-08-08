@@ -10,6 +10,23 @@
 
 
 
+## vue打包项目后刷新404的问题Nginx配置
+>> 这次给大家带来Vue在打包项目以后刷新显示404应该怎么处理，处理Vue在打包项目以后刷新显示404的注意事项有哪些。
+
+```javascript
+server {
+  listen   80;
+  server_name localhost;
+  index index.html;
+  root /root/dist;
+  location / {
+    root /root/dist;
+    try_files $uri $uri/ /index.html =404;
+  }
+}
+```
+
+
 ## vue使用keep-alive
 
 >到现在，接触vue也小段时间了，项目进行到了一定程度，然而项目缺少了缓存机制，所以每次跳转页面都会重新created一下数据，虽说系统的数据请求速度很快，但是这样做对系统的性能会有很大的坏处的，所以到这里就要对系统优化下，添加缓存了。
