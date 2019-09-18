@@ -8,6 +8,82 @@
 
 ![](_media/weixin.png)
 
+## 微信小程序授权拒绝之后解决方法
+
+```js
+	saveImageToPhotosAlbum(option) {
+        return new Promise((resolve, reject) => {
+            wx.saveImageToPhotosAlbum({
+                ...option,
+                success: resolve,
+                fail: reject,
+            })
+        })
+    },
+    save() {
+        var that = this;
+        this.saveImageToPhotosAlbum({
+            filePath: that.data.previewImageUrl
+        }).then(() => {
+            wx.showToast({
+                icon: 'none',
+                title: '分享图片已保存至相册',
+                duration: 2000
+            })
+        }).catch((err) => {
+            console.log(err)
+            let errMsg = err.errMsg
+            let msg = ''
+            if (errMsg === "saveImageToPhotosAlbum:fail:auth denied" || errMsg === "saveImageToPhotosAlbum:fail auth deny" || errMsg === "saveImageToPhotosAlbum:fail authorize no response") {
+                // 这边微信做过调整，必须要在按钮中触发，因此需要在弹框回调中进行调用
+                that.imageErrorAuth()
+            } else {
+                msg = '保存失败'
+            }
+            if (msg) {
+                wx.showToast({
+                    title: msg,
+                    icon: 'none',
+                    duration: 2000
+                })
+            }
+        })
+    },
+    imageErrorAuth() {
+        // 授权失败 提示授权操作
+        wx.showModal({
+            title: '提示',
+            content: '需要您授权保存至相册',
+            showCancel: false,
+            success: modalSuccess => {
+                wx.openSetting({
+                    success(settingData) {
+                        console.log("settingData", settingData)
+                        if (settingData.authSetting['scope.writePhotosAlbum']) {
+                            wx.showModal({
+                                title: '提示',
+                                content: '获取权限成功,再次保存图片即可',
+                                showCancel: false
+                            })
+                        } else {
+                            wx.showModal({
+                                title: '提示',
+                                content: '获取权限失败，将无法保存到相册',
+                                showCancel: false
+                            })
+                        }
+                    },
+                    fail(failData) {
+                        console.log("failData", failData)
+                    },
+                    complete(finishData) {
+                        console.log("finishData", finishData)
+                    }
+                })
+            }
+        })
+    },
+```
 
 
 ## vue打包项目后刷新404的问题Nginx配置
