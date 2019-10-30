@@ -9,6 +9,46 @@
 ![](_media/weixin.png)
 
 
+
+## nuxt.js部署vue应用到服务端过程
+
+> 配置nginx代理监听3002端口，package打包时端口3002
+> 在nginx的 vhost里新建一个主机绑定
+
+```js
+upstream nodenuxt {
+    server 127.0.0.1:3002; #nuxt项目 监听端口
+    keepalive 64;
+}
+
+server {
+    listen 80;
+    server_name mysite.com;
+    location / {
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;  
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $host;
+        proxy_set_header X-Nginx-Proxy true;
+        proxy_cache_bypass $http_upgrade;
+        proxy_pass http://nodenuxt; #反向代理
+    }
+}
+```
+
+> 项目在本地完成后，npm run build 打包应用 , 打包完成后，我们将
+```
+.nuxt
+static
+nuxt.config.js
+package.json
+```
+
+>运行npm install 安装package里的依赖 
+>运行npm start 就可以运行起来nuxt的服务渲染了
+
+
+
 ## 腾讯 rem.js
 
 >用 `onorientationchange` 函数来检测屏幕旋转，在一些APP或游戏内嵌页面会有该函数不会执行、orientation获取不到的情况。所以如果是游戏app内嵌页建议使用 resize 事件，检查宽高变化来检测屏幕是否旋转。
