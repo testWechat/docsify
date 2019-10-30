@@ -8,6 +8,51 @@
 
 ![](_media/weixin.png)
 
+
+## 腾讯 rem.js
+
+>用 `onorientationchange` 函数来检测屏幕旋转，在一些APP或游戏内嵌页面会有该函数不会执行、orientation获取不到的情况。所以如果是游戏app内嵌页建议使用 resize 事件，检查宽高变化来检测屏幕是否旋转。
+
+```js
+<script> 
+    //屏幕适应 
+    (function (win, doc) {
+        if (!win.addEventListener) return;
+        var html = document.documentElement;
+        function setFont() {
+            var html = document.documentElement;
+            var k = 640;
+            html.style.fontSize = html.clientWidth / k * 100 + "px";
+        }
+        setFont();
+        setTimeout(function () {
+            setFont();
+        }, 300);
+        doc.addEventListener('DOMContentLoaded', setFont, false);
+        win.addEventListener('resize', setFont, false);
+        win.addEventListener('load', setFont, false);
+    })(window, document);
+</script>
+```
+
+
+
+## canvas 播放视频
+
+
+```js
+    <div id="videoWrapper"></div>
+    <script src="jsmpeg-player.min.js"></script>
+    <script>
+      var videoUrl = '../static/media/test_video.ts';
+      new JSMpeg.VideoElement('#videoWrapper', videoUrl);
+    </script> 
+
+	https://www.npmjs.com/package/jsmpeg-player
+
+	DEMO  :  https://cycdpo.github.io/jsmpeg-player/
+```
+
 ## 微信小程序授权拒绝之后解决方法
 
 ```js
