@@ -10,6 +10,37 @@
 
 
 
+## 微信H5 关闭页面
+
+```js
+setTimeout(function () {
+    WeixinJSBridge.call('closeWindow');
+    document.addEventListener('WeixinJSBridgeReady', function () {
+        WeixinJSBridge.call('closeWindow');
+    }, false)
+}, 1000)
+```
+
+## rem 适配屏幕尺寸
+
+```
+fnResize()
+window.onresize = function () {
+  fnResize()
+}
+function fnResize() {
+  var deviceWidth = document.documentElement.clientWidth || window.innerWidth;
+  if (deviceWidth >= 750) {
+	deviceWidth = 750
+  }
+  if (deviceWidth <= 320) {
+	deviceWidth = 320
+  }
+  document.documentElement.style.fontSize = (deviceWidth / 3.75) + 'px'
+}
+```
+
+
 ## nuxt.js部署vue应用到服务端过程
 
 > 配置nginx代理监听3002端口，package打包时端口3002
