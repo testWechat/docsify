@@ -10,6 +10,9 @@
 
 
 
+## [PxLoader](http://thinkpixellab.com/pxloader/)
+> `PxLoader`是一个Javascript库，可帮助您下载图像，声音文件或您在网站上执行特定操作（例如显示用户界面或开始游戏）之前需要的其他任何内容。您可以使用它为HTML5游戏和网站创建预加载器。
+
 ## Vue本地部署
 
 > history 模式下 页面空白不显示
@@ -32,7 +35,7 @@ setTimeout(function () {
 
 ## rem 适配屏幕尺寸
 
-```
+```js
 fnResize()
 window.onresize = function () {
   fnResize()
@@ -78,7 +81,7 @@ server {
 
 > 项目在本地完成后，npm run build 打包应用 , 打包完成后，我们将
 
-```
+```js
 .nuxt
 static
 nuxt.config.js
