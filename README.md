@@ -10,6 +10,14 @@
 
 
 
+## Vue本地部署
+
+> history 模式下 页面空白不显示
+> 修改config 下 `index.js` assetsPublicPath 为:'./'
+```js
+  mode: 'history',
+  base: '/2020/7/vuetest', // 需要指定当前网站更目录
+```
 ## 微信H5 关闭页面
 
 ```js
