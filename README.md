@@ -12,12 +12,15 @@
 
 ## Python 使用pip安装一些包失败
 
-> 1.一次使用
+- 一次使用
 > 比如安装numpy
-> pip install -i https://pypi.tuna.tsinghua.edu.cn/simple 库名
-> 2.长期使用
+> 
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple 库名
+
+- 长期使用
 > 修改用户文件夹下面的pip/pip.ini文件
-> 内容：
+>
+内容：
 
 ```js
 [global]
