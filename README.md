@@ -9,12 +9,29 @@
 ![](_media/weixin.png)
 
 
-## Python BeautifulSoup4的使用方法
+
+## Python 使用pip安装一些包失败
+
+> 1.一次使用
+> 比如安装numpy
+> pip install -i https://pypi.tuna.tsinghua.edu.cn/simple 库名
+> 2.长期使用
+> 修改用户文件夹下面的pip/pip.ini文件
+> 内容：
+
+```js
+[global]
+index-url = http://pypi.douban.com/simple
+[install]
+trusted-host = pypi.douban.com
+```
+
+## Python BeautifulSoup4 的使用方法
 
 > 环境安装：
 
 ```js
-	pip install lxml bs4用到lxml库，如果没有安装过lxml库的时候，需要安装一下
+pip install lxml bs4用到lxml库，如果没有安装过lxml库的时候，需要安装一下
 ```
 
 > 使用方式：
