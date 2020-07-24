@@ -8,7 +8,11 @@
 
 ![](_media/weixin.png)
 
+## Python 打包之后缺少模块
 
+```js
+D:\Python>pyinstaller 3.py -F -p C:/python/lib/site-packages
+```
 
 ## Python 使用pip安装一些包失败
 
