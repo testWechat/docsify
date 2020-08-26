@@ -8,6 +8,18 @@
 
 ![](_media/weixin.png)
 
+
+## 移动端调试
+
+```js
+	;(function () {
+		var src = '//cdn.jsdelivr.net/npm/eruda';
+		if (!/eruda=true/.test(window.location) && localStorage.getItem('active-eruda') != 'true') return;
+		document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
+		document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
+	})();
+```
+
 ## Python 打包之后缺少模块
 
 ```js
