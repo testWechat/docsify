@@ -8,16 +8,150 @@
 
 ![](_media/weixin.png)
 
+## js 获取URL参数
+
+```js
+function getQuery(variable) {
+	var query = window.location.search.substring(1);
+	var vars = query.split("&");
+	for (var i = 0; i < vars.length; i++) {
+		var pair = vars[i].split("=");
+		if (pair[0] == variable) {
+			return pair[1];
+		}
+	}
+	return(false);
+},
+	
+```
+
+
+## 旋转图片
+
+```js
+
+
+var rotationCanvas = document.createElement("canvas");
+var rotationCtx = rotationCanvas.getContext('2d');
+
+function rotationImage(img, image_angle, i, cb) {
+    var rotationImg = new Image();
+    rotationImg.src = img;
+    rotationImg.onload = function () {
+        var imgW = this.width;
+        var imgH = this.height;
+        if (image_angle === 360)
+            image_angle = 0;
+        if (image_angle === 0 || image_angle === 180) {
+            rotationCanvas.width = imgW;
+            rotationCanvas.height = imgH;
+        } else {
+            rotationCanvas.width = imgH;
+            rotationCanvas.height = imgW;
+        }
+
+        rotationCtx.clearRect(0, 0, rotationCanvas.width, rotationCanvas.height);
+        rotationCtx.save();
+        rotationCtx.translate(rotationCanvas.width / 2, rotationCanvas.height / 2);
+        rotationCtx.rotate(image_angle * Math.PI / 180);
+        if (image_angle === 0 || image_angle === 180) {
+            rotationCtx.drawImage(rotationImg, 0, 0, imgW, imgH, rotationCanvas.width / -2, rotationCanvas.height / -2, imgW, imgH);
+        } else {
+            rotationCtx.drawImage(rotationImg, 0, 0, imgW, imgH, rotationCanvas.height / -2, rotationCanvas.width / -2, imgW, imgH);
+        }
+        rotationCtx.restore();
+        var imgData = rotationCanvas.toDataURL("image/jpeg");
+        cb && cb(imgData, i);
+//        $("body").append('<img style="border:10px solid green;width:200px;" src="' + imgData + '"/>');
+    };
+}
+
+```
+
+
+## 图片等比例压缩
+
+```js
+
+function compress(fileObj, callback) {
+    if (typeof (FileReader) === 'undefined') {
+        console.log("当前浏览器内核不支持base64图标压缩");
+        return false;
+    } else {
+        try {
+            var reader = new FileReader();
+            var image = new Image();
+            reader.readAsDataURL(fileObj);//开始读取指定的Blob中的内容。返回base64
+            reader.onload = function (ev) {
+                image.src = ev.target.result;
+                image.onload = function () {
+                    var imgWidth = this.width, imgHeight = this.height; //获取图片宽高
+                    var canvas = document.createElement('canvas');
+                    var ctx = canvas.getContext('2d');
+                    canvas.width = imgWidth;
+                    canvas.height = imgHeight;
+                    ctx.drawImage(this, 0, 0, imgWidth, imgHeight);//根据宽高绘制图片
+                    var dataurl = canvas.toDataURL("image/jpeg", 0.5);//canvase 转为base64
+//                        var blogData = dataURLtoBlob(dataurl);//base64转为blog
+                    callback(dataurl);
+                }
+            }
+        } catch (e) {
+            console.log("压缩失败!");
+        }
+    }
+}
+
+```
+
+
+## Base64字符串转二进制
+
+```js
+
+function dataURLtoBlob(dataurl) {
+    var arr = dataurl.split(','),
+            mime = arr[0].match(/:(.*?);/)[1],
+            bstr = atob(arr[1]),
+            n = bstr.length,
+            u8arr = new Uint8Array(n);
+    while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+    }
+    return new Blob([u8arr], {
+        type: mime
+    });
+}
+
+```
+
+## 将base64 的图片转换成file对象上传 atob将ascii码解析成binary数据
+
+```js
+
+function base64ToFile(data) {
+    console.log(data)
+	将base64 的图片转换成file对象上传 atob将ascii码解析成binary数据
+    var binary = atob(data.split(',')[1]);
+    var mime = data.split(',')[0].match(/:(.*?);/)[1];
+    var array = [];
+    for (var i = 0; i < binary.length; i++) {
+        array.push(binary.charCodeAt(i));
+    }
+    var fileData = new Blob([new Uint8Array(array)], {type: mime, });
+    var file = new File([fileData], new Date().getTime() + '.png', {type: mime});
+    return flie;
+}
+
+
+```
+
 
 ## 移动端调试
 
 ```js
-	;(function () {
-		var src = '//cdn.jsdelivr.net/npm/eruda';
-		if (!/eruda=true/.test(window.location) && localStorage.getItem('active-eruda') != 'true') return;
-		document.write('<scr' + 'ipt src="' + src + '"></scr' + 'ipt>');
-		document.write('<scr' + 'ipt>eruda.init();</scr' + 'ipt>');
-	})();
+	<script src="//cdn.jsdelivr.net/npm/eruda"></script>
+	eruda.init();
 ```
 
 ## Python 打包之后缺少模块
