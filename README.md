@@ -8,6 +8,102 @@
 
 ![](_media/weixin.png)
 
+
+## 弹窗提示msg
+
+```css
+	.am-toast.am-toast-mask {
+		height: 100%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		left: 0;
+		top: 0;
+		position: fixed;
+		z-index: 9999;
+		width: 100%;
+	}
+
+	.am-toast.am-toast-mask,
+	.am-toast.am-toast-nomask {
+		-webkit-transform: translateZ(1px);
+		transform: translateZ(1px)
+	}
+
+	.am-toast.am-toast-nomask {
+		position: fixed;
+		max-width: 50%;
+		width: auto;
+		left: 50%;
+		top: 50%
+	}
+
+	.am-toast.am-toast-nomask .am-toast-notice {
+		-webkit-transform: translateX(-50%) translateY(-50%);
+		transform: translateX(-50%) translateY(-50%)
+	}
+
+	.am-toast-notice-content .am-toast-text {
+		min-width: 160px;
+		border-radius: 3px;
+		color: #fff;
+		background-color: rgba(58, 58, 58, .9); 
+		/*background: #000;*/
+		/*line-height: 3.5;*/
+		padding: 20px 15px;
+		text-align: center;
+		font-size: 26px;
+	}
+
+	.am-toast-notice-content .am-toast-text.am-toast-text-icon {
+		border-radius: 5px;
+		padding: 15px
+	}
+
+	.am-toast-notice-content .am-toast-text.am-toast-text-icon .am-toast-text-info {
+		margin-top: 6px
+	}
+```
+```html
+	<div class="am-toast am-toast-mask" style="display: none;">
+		<div class="am-toast-notice-content">
+			<div class="am-toast-text" role="alert" aria-live="assertive">
+				<div class="msg">发送成功</div>
+			</div>
+		</div>
+	</div>
+```
+```js
+	/**
+	 弹窗提示
+	 */
+	function msg(text) {
+		$(".am-toast-mask").fadeIn(function () {
+			setTimeout(function () {
+				$(".am-toast-mask").fadeOut();
+			}, 1500);
+		});
+		$(".am-toast-mask .msg").html(text);
+	}
+```
+
+
+## js 获取cookie 
+
+```js
+function getCookie(cname){
+  var name = cname + "=";
+  var ca = document.cookie.split(';');
+  for(var i=0; i<ca.length; i++) 
+  {
+    var c = ca[i].trim();
+    if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+  }
+  return "";
+}
+```
+
+
 ## js 获取URL参数
 
 ```js
@@ -22,6 +118,25 @@ function getQuery(variable) {
 	}
 	return(false);
 },
+	
+	
+	
+	
+$_GET = function () {
+	var url = window.document.location.href.toString();
+	var u = url.split("?");
+	if (typeof (u[1]) == "string") {
+		u = u[1].split("&");
+		var get = {};
+		for (var i in u) {
+			var j = u[i].split("=");
+			get[j[0]] = j[1];
+		}
+		return get;
+	} else {
+		return {};
+	}
+}
 	
 ```
 
