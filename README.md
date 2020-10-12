@@ -370,23 +370,27 @@ setTimeout(function () {
 }, 1000)
 ```
 
-## rem 适配屏幕尺寸
+## viewport 适配屏幕尺寸
 
 ```js
-fnResize()
-window.onresize = function () {
-  fnResize()
-}
-function fnResize() {
-  var deviceWidth = document.documentElement.clientWidth || window.innerWidth;
-  if (deviceWidth >= 750) {
-	deviceWidth = 750
-  }
-  if (deviceWidth <= 320) {
-	deviceWidth = 320
-  }
-  document.documentElement.style.fontSize = (deviceWidth / 3.75) + 'px'
-}
+	!function () {
+		function t(t, e, n) {
+			var i, r, o = document.querySelector('meta[name="viewport"]'),
+				a = document.documentElement.clientWidth;
+			switch (t) {
+				case "fixed":
+					i = e, r = a / e;
+					break;
+				case "rem":
+					var s = window.devicePixelRatio || 1;
+					i = a * s, r = 1 / s, document.documentElement.style.fontSize = 100 * (a * s / e) + "px"
+			}
+			o.setAttribute("content", "width=" + 750 + ",initial-scale=" + r + ",maximum-scale=" + r + ",minimum-scale=" + r), n && window.addEventListener("DOMContentLoaded", function () {
+				document.body.style.fontSize = 50 / r + "px"
+			})
+		}
+		t("fixed", 750)
+	}();
 ```
 
 
