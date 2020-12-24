@@ -9,6 +9,31 @@
 ![](_media/weixin.png)
 
 
+
+## js url编码 & 解码
+
+```js
+
+	/**
+	 * 
+	 * @param {网址} url 
+	 * @param {true 解码  falsg 编码} flag 
+	 */
+	function urlcode(url,flag) {
+		return flag ? decodeURIComponent(url):encodeURIComponent(url);
+	}
+
+```
+
+## js 随机数
+
+```js
+	function getRndInteger (min, max) {
+	  return Math.floor(Math.random() * (max - min)) + min
+	}
+```
+
+
 ## 弹窗提示msg
 
 ```css
