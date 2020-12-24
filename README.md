@@ -13,103 +13,101 @@
 ## js url编码 & 解码
 
 ```js
-
-	/**
-	 * 
-	 * @param {网址} url 
-	 * @param {true 解码  falsg 编码} flag 
-	 */
-	function urlcode(url,flag) {
-		return flag ? decodeURIComponent(url):encodeURIComponent(url);
-	}
-
+/**
+ * 
+ * @param {网址} url 
+ * @param {true 解码  falsg 编码} flag 
+ */
+function urlcode(url,flag) {
+    return flag ? decodeURIComponent(url):encodeURIComponent(url);
+}
 ```
 
 ## js 随机数
 
 ```js
-	function getRndInteger (min, max) {
-	  return Math.floor(Math.random() * (max - min)) + min
-	}
+function getRndInteger (min, max) {
+    return Math.floor(Math.random() * (max - min)) + min
+}
 ```
 
 
 ## 弹窗提示msg
 
 ```css
-	.am-toast.am-toast-mask {
-		height: 100%;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		left: 0;
-		top: 0;
-		position: fixed;
-		z-index: 9999;
-		width: 100%;
-	}
+.am-toast.am-toast-mask {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+}
 
-	.am-toast.am-toast-mask,
-	.am-toast.am-toast-nomask {
-		-webkit-transform: translateZ(1px);
-		transform: translateZ(1px)
-	}
+.am-toast.am-toast-mask,
+.am-toast.am-toast-nomask {
+    -webkit-transform: translateZ(1px);
+    transform: translateZ(1px)
+}
 
-	.am-toast.am-toast-nomask {
-		position: fixed;
-		max-width: 50%;
-		width: auto;
-		left: 50%;
-		top: 50%
-	}
+.am-toast.am-toast-nomask {
+    position: fixed;
+    max-width: 50%;
+    width: auto;
+    left: 50%;
+    top: 50%
+}
 
-	.am-toast.am-toast-nomask .am-toast-notice {
-		-webkit-transform: translateX(-50%) translateY(-50%);
-		transform: translateX(-50%) translateY(-50%)
-	}
+.am-toast.am-toast-nomask .am-toast-notice {
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%)
+}
 
-	.am-toast-notice-content .am-toast-text {
-		min-width: 160px;
-		border-radius: 3px;
-		color: #fff;
-		background-color: rgba(58, 58, 58, .9); 
-		/*background: #000;*/
-		/*line-height: 3.5;*/
-		padding: 20px 15px;
-		text-align: center;
-		font-size: 26px;
-	}
+.am-toast-notice-content .am-toast-text {
+    min-width: 160px;
+    border-radius: 3px;
+    color: #fff;
+    background-color: rgba(58, 58, 58, .9); 
+    /*background: #000;*/
+    /*line-height: 3.5;*/
+    padding: 20px 15px;
+    text-align: center;
+    font-size: 26px;
+}
 
-	.am-toast-notice-content .am-toast-text.am-toast-text-icon {
-		border-radius: 5px;
-		padding: 15px
-	}
+.am-toast-notice-content .am-toast-text.am-toast-text-icon {
+    border-radius: 5px;
+    padding: 15px
+}
 
-	.am-toast-notice-content .am-toast-text.am-toast-text-icon .am-toast-text-info {
-		margin-top: 6px
-	}
+.am-toast-notice-content .am-toast-text.am-toast-text-icon .am-toast-text-info {
+    margin-top: 6px
+}
 ```
 ```html
-	<div class="am-toast am-toast-mask" style="display: none;">
-		<div class="am-toast-notice-content">
-			<div class="am-toast-text" role="alert" aria-live="assertive">
-				<div class="msg">发送成功</div>
-			</div>
-		</div>
-	</div>
+<div class="am-toast am-toast-mask" style="display: none;">
+    <div class="am-toast-notice-content">
+        <div class="am-toast-text" role="alert" aria-live="assertive">
+            <div class="msg">发送成功</div>
+        </div>
+    </div>
+</div>
 ```
 ```js
 	/**
 	 弹窗提示
 	 */
-	function msg(text) {
-		$(".am-toast-mask").fadeIn(function () {
-			setTimeout(function () {
-				$(".am-toast-mask").fadeOut();
-			}, 1500);
-		});
-		$(".am-toast-mask .msg").html(text);
-	}
+function msg(text) {
+    $(".am-toast-mask").fadeIn(function () {
+        setTimeout(function () {
+            $(".am-toast-mask").fadeOut();
+        }, 1500);
+    });
+    $(".am-toast-mask .msg").html(text);
+}
 ```
 
 
@@ -1567,82 +1565,122 @@ buildPosterSaveAlbum: function() {
   }
 ```
 
+## 微信小程序接口封装
+```js
+
+const host = 'host';
+// 小程序请求接口
+module.exports = {
+    // 图片上传接口
+    uploadFile: `${host}/upload`
+}
+
+```
+
+
 ## 微信小程序封装
 
 ```js
-/*
- * @Author: 开黑店养只猫
- * @Date: 2019-05-29 10:15:03 
- * @Desc: 小程序配置文件
- * @name: 医院小程序
- * @Last Modified time: 2019-05-29 10:15:03 
- */
-const wechatName = '医院小程序';
-const host = 'host';
+import config from './config.js'
+import app from './g.js'
 
-var config = {
-    // 小程序请求接口
-    host,
-    // 微信授权登录
-    login: `${host}login`,
-    // 获取openid
-    getOpenid: `${host}getOpenid`,
-    // 进入首页加载
-    init: `${host}init`,
-};
+const formatTime = date => {
+    var date = new Date();
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    const hour = date.getHours()
+    const minute = date.getMinutes()
+    const second = date.getSeconds()
+    const getDay = date.getDay();
+
+    const weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    const weekdayen = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
+
+    // return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+    // return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute].map(formatNumber).join(':')
+    const daystr = [year, month, day].map(formatNumber)
+    // return year + '年' + month + '月' + day + '号';
+    return {
+        week: weekday[getDay],
+        weeken: weekdayen[getDay],
+        date: daystr[0] + '年' + daystr[1] + '月' + daystr[2] + '号'
+    };
+}
+
+const formatNumber = n => {
+    n = n.toString()
+    return n[1] ? n : '0' + n
+}
+
+function checkFullSucreen() {
+    const res = wx.getSystemInfoSync()
+    wx.setStorage({
+        data: res,
+        key: 'systemInfo'
+    })
+
+    if (wx.getMenuButtonBoundingClientRect()) {
+        let menuButtonObject = wx.getMenuButtonBoundingClientRect();
+        wx.getSystemInfo({
+            success: res => {
+                let statusBarHeight = res.statusBarHeight,
+                    navTop = menuButtonObject.top, //胶囊按钮与顶部的距离
+                    navHeight = statusBarHeight + menuButtonObject.height + (menuButtonObject.top - statusBarHeight) * 2; //导航高度
+                wx.setStorage({
+                    data: navHeight,
+                    key: 'navHeight',
+                })
+                wx.setStorage({
+                    data: navTop,
+                    key: 'navTop',
+                })
+                wx.setStorage({
+                    data: menuButtonObject,
+                    key: 'menuButtonObject',
+                })
+            }
+        });
+    }
+}
 
 
 /**
  * 小程序主动更新
  */
 function updateManager() {
-    // 获取小程序更新机制兼容
-    if (wx.canIUse('getUpdateManager')) {
-        const updateManager = wx.getUpdateManager()
-        updateManager.onCheckForUpdate(function(res) {
-            // 请求完新版本信息的回调
-            if (res.hasUpdate) {
-                updateManager.onUpdateReady(function() {
-                    wx.showModal({
-                        title: '更新提示',
-                        content: '新版本已经准备好，是否重启应用？',
-                        showCancel: false,
-                        success: function(res) {
-                            if (res.confirm) {
-                                // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
-                                updateManager.applyUpdate()
-                            }
-                        }
-                    })
-                })
-                updateManager.onUpdateFailed(function() {
-                    // 新的版本下载失败
-                    wx.showModal({
-                        title: '已经有新版本了哟~',
-                        showCancel: false,
-                        content: '请在微信 “发现-小程序” 页删除当前小程序，重新通过小程序名称搜索打开使用最新版本',
-                    })
-                })
-            }
-        })
-    } else {
-        // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
+    if (!wx.canIUse('getUpdateManager')) {
+        return false;
+    }
+    const updateManager = wx.getUpdateManager();
+    updateManager.onCheckForUpdate(function (res) {
+        // 请求完新版本信息的回调
+        // console.log(res.hasUpdate)
+    });
+    updateManager.onUpdateReady(function () {
         wx.showModal({
-            title: '提示',
+            title: '更新提示',
+            content: '新版本已经准备好，即将重启应用',
             showCancel: false,
-            content: '当前微信版本过低,请升级到最新微信版本。'
+            success(res) {
+                if (res.confirm) {
+                    // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+                    updateManager.applyUpdate()
+                }
+            }
+        });
+    });
+    updateManager.onUpdateFailed(function () {
+        // 新的版本下载失败
+        wx.showModal({
+            title: '更新提示',
+            content: '新版本下载失败',
+            showCancel: false
         })
-    }
+    });
 }
 
-
-function log(obj) {
-    if (typeof obj === 'string') {
-        console.log("%c " + obj, "color:#0a0;font-size:3em;");
-    } else {
-        console.log(obj);
-    }
-}
 
 
 function __args() {
@@ -1715,30 +1753,47 @@ function random(Max, Min) { // 随机数
 }
 
 
-function showSuccess(msg, callback) { //显示成功提示框
+function success(msg, callback) { //显示成功提示框
     wx.showToast({
         title: msg,
         icon: 'success',
         mask: true,
         duration: 1500,
-        success: function() {
-            callback && (setTimeout(function() {
+        success: function () {
+            callback && (setTimeout(function () {
                 callback();
             }, 1500));
         }
     });
 }
 
-function showError(msg, callback) { //显示 showModal 提示框
+function alert(msg, callback) { //显示 showModal 提示框
     wx.showModal({
-        title: '微信提示',
+        title: '提示',
         content: msg,
         showCancel: false,
-        success: function(res) {
+        success: function (res) {
             callback && callback();
         }
     });
 }
+
+
+function confirm(msg, callback) { //显示 showModal 提示框
+    wx.showModal({
+        title: '提示',
+        content: msg,
+        showCancel: true,
+        success: function (res) {
+            if (res.confirm) {
+                callback && callback();
+            } else if (res.cancel) {
+                console.log('用户点击取消')
+            }
+        }
+    });
+}
+
 
 
 function urlEncode(data) { //对象转URL
@@ -1746,7 +1801,7 @@ function urlEncode(data) { //对象转URL
     for (var key in data) {
         var value = data[key];
         if (value.constructor == Array) {
-            value.forEach(function(_value) {
+            value.forEach(function (_value) {
                 _result.push(key + "=" + _value);
             });
         } else {
@@ -1756,7 +1811,7 @@ function urlEncode(data) { //对象转URL
     return _result.join('&');
 }
 
-function alert(title) { // 提示
+function msg(title) { // 提示
     wx.showToast({
         title: title,
         icon: 'none'
@@ -1779,7 +1834,61 @@ function sequenceTasks(tasks) { //图片上传-顺序处理函数
     return promise;
 }
 
-function uploadFile(num, success) { //上传照片 上传数量  回调函数
+// 上传图片
+function uploadFile(tempFilePaths, success) {
+    var imgindex = 0;
+    var imgarr = []; //上传保存图片路径
+    console.log(tempFilePaths);
+    console.log(`${config.uploadFile}`);
+    wx.showLoading({
+        title: "上传中"
+    });
+    //函数数组，每个函数的返回值是一个promise对象
+    let promiseFuncArr = [];
+    //图片地址数组
+    let imageList = [];
+    //将图片地址的上传的函数加入到promiseFuncArr数组中
+    for (let i = 0; i < tempFilePaths.length; i++) {
+        let promiseTemp = function () {
+            return new Promise((resolve, reject) => {
+                //微信图片上传
+                var formData = {
+                    openid: wx.getStorageSync('openid'),
+                }
+                // console.log(formData);
+                wx.uploadFile({
+                    url: `${config.uploadFile}`,
+                    filePath: tempFilePaths[i],
+                    name: 'img',
+                    formData: formData,
+                    success: function (res) {
+                        //可以对res进行处理，然后resolve返回
+                        resolve(res);
+                    },
+                    fail: function (error) {
+                        reject(error);
+                    },
+                    complete: function (res) {
+                        wx.hideLoading();
+                    },
+                })
+            });
+        };
+        promiseFuncArr.push(promiseTemp)
+    }
+
+    sequenceTasks(promiseFuncArr).then((result) => {
+        console.log(result);
+        result.map(v => {
+            imgarr.push(JSON.parse(v.data).data.src);
+        });
+        wx.hideLoading();
+        success && success(imgarr);
+        //对返回的result数组进行处理
+    });
+}
+
+function chooseImage(num, success) { //上传照片 上传数量  回调函数
     var imgindex = 0;
     var imgarr = []; //上传保存图片路径
     wx.chooseImage({
@@ -1789,7 +1898,8 @@ function uploadFile(num, success) { //上传照片 上传数量  回调函数
         success(res) {
             const tempFilePaths = res.tempFilePaths;
             // console.log(tempFilePaths);
-            // return false;
+            // console.log(config);
+
             wx.showLoading({
                 title: "上传中"
             });
@@ -1799,21 +1909,28 @@ function uploadFile(num, success) { //上传照片 上传数量  回调函数
             let imageList = [];
             //将图片地址的上传的函数加入到promiseFuncArr数组中
             for (let i = 0; i < tempFilePaths.length; i++) {
-                let promiseTemp = function() {
+                let promiseTemp = function () {
                     return new Promise((resolve, reject) => {
                         //微信图片上传
+                        var formData = {
+                            openid: wx.getStorageSync('openid'),
+                        }
+                        // console.log(formData);
                         wx.uploadFile({
                             url: `${config.uploadFile}`,
                             filePath: tempFilePaths[i],
-                            name: 'upfile',
-                            success: function(res) {
+                            name: 'img',
+                            formData: formData,
+                            success: function (res) {
                                 //可以对res进行处理，然后resolve返回
                                 resolve(res);
                             },
-                            fail: function(error) {
+                            fail: function (error) {
                                 reject(error);
                             },
-                            complete: function(res) {},
+                            complete: function (res) {
+                                wx.hideLoading();
+                            },
                         })
                     });
                 };
@@ -1823,7 +1940,7 @@ function uploadFile(num, success) { //上传照片 上传数量  回调函数
             sequenceTasks(promiseFuncArr).then((result) => {
                 console.log(result);
                 result.map(v => {
-                    imgarr.push(JSON.parse(v.data).url);
+                    imgarr.push(JSON.parse(v.data).data.src);
                 });
                 wx.hideLoading();
                 success && success(imgarr);
@@ -1845,13 +1962,19 @@ function delsys(key) { //删除本地存储
     wx.removeStorageSync(key);
 }
 
-function gourl(url) { //跳转到指定页面
+function gourl(url) { //跳转到指定页面  如果是网址链接 /pages/webview/index 跳转到这个页面打开
     if (!url || url.length == 0) {
         return false;
     }
-    wx.navigateTo({
-        url: url
-    });
+    if (ishttps(url)) {
+        wx.navigateTo({
+            url: '/pages/webview/index?url=' + url
+        });
+    } else {
+        wx.navigateTo({
+            url: url
+        });
+    }
 }
 
 
@@ -1908,8 +2031,19 @@ function deleteHtmlTag(str) {
 // 微信小程序rich-text富文本图片自适应处理
 function richtext(data) {
     var result = data;
-    result = result.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ');
     result = result.replace(/section/gi, 'div');
+    result = result.replace(/data-src/gi, 'src');
+    result = result.replace(/src="data:/gi, 'data-src="data:');
+
+
+    result = result.replace(/<img[^>]*>/gi, function (match, capture) {
+        var match = match.replace(/style/gi, 'styles');
+        return match;
+        console.log(match);
+    });
+    result = result.replace(/\<img/gi, '<img style="max-width:100%!important;height:auto!important;display:block;" ');
+
+
     return result;
 }
 // 获取 自定义  data 属性
@@ -1986,71 +2120,296 @@ function getDateDiff(dateStr) {
     }
 }
 
-function islogin() {
-    //	检测用户是否授权
-    wx.getSetting({
-        success(res) {
-            if (!res.authSetting['scope.userInfo']) {
-                wx.navigateTo({
-                    url: '/pages/login/login'
-                });
-            }
-        }
-    })
-},
+// 对象转json  ，  json转对象
+function json(data, state) {
+    if (state) {
+        return JSON.stringify(data);
+    } else {
+        return JSON.parse(data);
+    }
+}
 
-function getOpenid(cb) { //	获取openid
-	let app = this;
-	wx.login({
-		success(res) {
-			if (res.code) {
-				app._post(app.config.getOpenid, {
-					code: res.code
-				}, function(res) {
-					if (res.data.code == 0) {
-						wx.setStorageSync('openid', res.data.data.openid);
-						// wx.setStorageSync('userid', res.data.data.userid)
-						cb && cb();
-					}
-				});
-			} else {
-				app.getOpenid();
-				console.log('登录失败！' + res.errMsg)
-			}
-		}
-	});
+// 隐藏银行卡号码
+function hidebank(s = "6104021990100952193") {
+    return s.replace(/^(\d{8})\d+(\d{4})$/, "$1*******$2");
+}
+//  隐藏手机号
+function hidephone(s = "13335309435") {
+    return s.replace(/^(\d{3})\d+(\d{4})$/, "$1****$2");
+}
+
+// 打印数组或字符变量,对象请用log打印
+
+function dump(r, n) {
+    var t = "",
+        o = function (r, n) {
+            for (var t = "", o = 0; o < r; o++) t += n;
+            return t
+        },
+        e = function (r, n, t, c) {
+            n > 0 && n++;
+            var i = o(t * n, c),
+                u = o(t * (n + 1), c),
+                a = "";
+            if ("object" == typeof r && null !== r && r.constructor) {
+                a += "Array\n" + i + "(\n";
+                for (var f in r) "[object Array]" === Object.prototype.toString.call(r[f]) ? (a += u, a += "[", a += f, a += "] => ", a += e(r[f], n + 1, t, c)) : (a += u, a += "[", a += f, a += "] => ", a += r[f], a += "\n");
+                a += i + ")\n"
+            } else a = null === r || void 0 === r ? "" : r.toString();
+            return a
+        };
+    return t = e(r, 0, 4, " "), !0 !== n ? (echo(t), !0) : t
 }
 
 
-function Rad(d) { //根据经纬度判断距离
-	return d * Math.PI / 180.0;
-},
-function getDistance(lat1, lng1, lat2, lng2) {
-	// lat1用户的纬度
-	// lng1用户的经度
-	// lat2商家的纬度
-	// lng2商家的经度
-	var radLat1 = Rad(lat1);
-	var radLat2 = Rad(lat2);
-	var a = radLat1 - radLat2;
-	var b = Rad(lng1) - Rad(lng2);
-	var s = 2 * Math.asin(Math.sqrt(Math.pow(Math.sin(a / 2), 2) + Math.cos(radLat1) * Math.cos(radLat2) * Math.pow(Math.sin(b / 2), 2)));
-	s = s * 6378.137;
-	s = Math.round(s * 10000) / 10000;
-	s = s.toFixed(1); //保留两位小数
-	console.log('经纬度计算的距离:' + s)
-	return s
-},
+function rpxTopx(rpx) {
+    // 小程序 rpx 转 px
+    return rpx / 750 * wx.getSystemInfoSync().windowWidth;
+}
+
+
+function toBack() {
+    // 返回上一页
+    wx.navigateBack();
+}
+
+
+/**
+ * scene解码
+ */
+function scene_decode(e) {
+    if (e === undefined)
+        return {};
+    let scene = decodeURIComponent(e),
+        params = scene.split(','),
+        data = {};
+    for (let i in params) {
+        var val = params[i].split(':');
+        val.length > 0 && val[0] && (data[val[0]] = val[1] || null)
+    }
+    return data;
+}
+
+function wxPay(result, cb) { // 微信支付
+    var App = this;
+    console.log('微信支付信息', result);
+    wx.requestPayment({
+        timeStamp: result.timestamp,
+        nonceStr: result.nonceStr,
+        package: result.package,
+        signType: 'MD5',
+        paySign: result.paySign,
+        success: function (res) {
+            alert('支付成功');
+            cb && cb();
+        },
+        fail: function (e) {
+            console.log('微信支付错误信息：', e);
+            // App.showError('订单未支付', function () {
+            // const pages = getCurrentPages();
+            // const currentPage = pages[pages.length - 1];
+            // if (currentPage.route == 'pages/order/submit/index') {
+            //     // 跳转到未付款订单
+            //     wx.redirectTo({
+            //         url: '/pages/order/index/index'
+            //     });
+            // }
+            // });
+        },
+    });
+}
+
+
+
+function getImageInfo(url) {
+    return new Promise((resolve, reject) => {
+        const objExp = new RegExp(/^http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?/)
+        if (objExp.test(url)) {
+            wx.getImageInfo({
+                src: url,
+                complete: res => {
+                    if (res.errMsg === 'getImageInfo:ok') {
+                        resolve(res.path)
+                    } else {
+                        this.triggerEvent('getImage', {
+                            errMsg: 'canvasdrawer:download fail'
+                        })
+                        reject(new Error('getImageInfo fail'))
+                    }
+                }
+            })
+        } else {
+            resolve(url)
+        }
+    })
+}
+
+function getImagesInfo(views, callback) {
+    const imageList = []
+    for (let i = 0; i < views.length; i++) {
+        imageList.push(this.getImageInfo(views[i]))
+    }
+
+    const loadTask = []
+    for (let i = 0; i < imageList.length; i++) {
+        loadTask.push(new Promise((resolve, reject) => {
+            Promise.all(imageList.splice(i * imageList.length, imageList.length)).then(res => {
+                resolve(res)
+            }).catch(res => {
+                reject(res)
+            })
+        }))
+    }
+
+    Promise.all(loadTask).then(res => {
+        let tempFileList = []
+        for (let i = 0; i < res.length; i++) {
+            tempFileList = tempFileList.concat(res[i])
+        }
+        console.log(tempFileList);
+        callback && callback(tempFileList);
+    })
+}
+// 判断链接是否是https
+function ishttps(url) {
+    if (url.slice(0, 5) == 'https') {
+        return true;
+    } else {
+        return false;
+    }
+}
+// 打开文件预览
+
+function opfile(url) {
+    wx.downloadFile({
+        url: url,
+        success(res) {
+            var filePath = res.tempFilePath;
+            console.log(filePath);
+            wx.openDocument({
+                filePath: filePath,
+                showMenu: true,
+                // fileType: ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'], //文件类型
+                success: function (res) {
+                    console.log('打开文档成功')
+                },
+                fail: function (res) {
+                    console.log(res);
+                },
+                complete: function (res) {
+                    console.log(res);
+                }
+            })
+        }
+    })
+}
+
+// 微信授权
+function wxlogin(e, cb) {
+    if (e.detail.errMsg !== 'getUserInfo:ok') {
+        return false;
+    }
+    wx.showLoading({
+        title: "正在登录",
+        mask: true
+    });
+    wx.login({
+        success: function (data) {
+            console.log(data);
+            // 执行微信登录
+            app.http.post(config.login, {
+                code: data.code,
+                encryptedData: e.detail.encryptedData,
+                iv: e.detail.iv,
+            }).then((d) => {
+                console.log(d);
+                if (d.code == 0) {
+                    setsys('openid', d.msg.openid);
+                    setsys('userinfo', d.msg);
+                    alert('授权登陆成功');
+                    cb && cb();
+                }
+                if (d.code == 1) {
+                    alert(d.msg);
+                }
+            })
+        }
+    });
+}
+
+
+/**
+ * 手机号授权
+ */
+function wxphone(e, cb) {
+    if (e.detail.errMsg !== 'getPhoneNumber:ok') {
+        return false;
+    }
+    // wx.showLoading({
+    //     title: "正在登录",
+    //     mask: true
+    // });
+    wx.login({
+        success: function (data) {
+            console.log(data);
+            // 执行微信登录
+            app.http.post(config.phone, {
+                code: data.code,
+                encryptedData: e.detail.encryptedData,
+                iv: e.detail.iv,
+            }).then((d) => {
+                if (d.code == 0) {
+                    setsys('phone', d.data.phoneNumber);
+                    // alert('授权登陆成功');
+                    cb && cb(d.data.phoneNumber);
+                }
+            })
+        }
+    });
+}
+
+
+function checkOpenid() { //检测用户是否登录
+    if (!getsys('openid')) {
+        gourl(`/pages/login/index`);
+        return false;
+    }
+}
+
+/**
+ * 检测时间
+*/
+function checkTime(endtime) {
+    console.log(endtime);
+    
+    var nowD = new Date(), //当前时间
+        endD = new Date(endtime); //对比时间
+    if (nowD.getTime() > endD.getTime()) {
+        return true;
+    }
+    return false;
+}
+
+
 module.exports = {
-    config: config,
+    checkTime:checkTime,
+    checkOpenid:checkOpenid,
+    opfile: opfile,
+    wxlogin: wxlogin,
+    wxphone: wxphone,
+    formatTime: formatTime,
+    wxPay: wxPay,
+    hidebank: hidebank,
+    getImageInfo: getImageInfo,
+    getImagesInfo: getImagesInfo,
+    scene_decode: scene_decode,
+    dump: dump,
+    hidephone: hidephone,
     to_date: to_date,
     removeAllSpace: removeAllSpace,
     random: random,
     urlEncode: urlEncode,
-    showSuccess: showSuccess,
-    showError: showError,
-    alert: alert,
-    uploadFile: uploadFile,
+    checkFullSucreen: checkFullSucreen,
     getsys: getsys,
     setsys: setsys,
     delsys: delsys,
@@ -2060,23 +2419,27 @@ module.exports = {
     gotab: gotab,
     htmlRestore: htmlRestore,
     htmlEncode: htmlEncode,
-    log: log,
     tapinfo: tapinfo,
     richtext: richtext,
+    uploadFile: uploadFile,
+    chooseImage: chooseImage,
     getDateDiff: getDateDiff,
     deleteHtmlTag: deleteHtmlTag,
+    json: json,
     updateManager: updateManager,
-    getDistance:getDistance,
-    islogin:islogin,
-    getOpenid:getOpenid
+    ishttps: ishttps,
+    rpxTopx: rpxTopx,
+    success:success,
+    alert:alert,
+    confirm:confirm,
+    msg:msg,
+    toBack: toBack
 }
 ```
 
 ## 从网页向小程序发送消息
 
 查阅[小程序官方文档](https://developers.weixin.qq.com/miniprogram/dev/component/web-view.html?search-key=wx.miniProgram.postMessage)，有这样一个接口 `wx.miniProgram.postMessage` ，可以用来从网页向小程序发送消息，然后通过 `bindmessage` 事件来监听消息，如下是官方文档描述
-
-![clipboard.png](../_media/403726539-5bc708dee6924_articlex.png)
 
 以下是代码：
 
@@ -3723,20 +4086,17 @@ gulp是一个自动化构建工具,开发者可以使用它在项目开发过程
 gulp是基于Node.js的插件工具
 
 1. 搭建Node.js环境：<https://nodejs.org/en/download/> 下载相应系统的node安装包。进入终端：键入：node -v如果出现node版本号，则node.js安装成功。
-   ![做一个合格的前端，gulp自动化构建工具入门教程](http://blog.wxall.top/uploads/allimg/190114/10335GE0-0.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=)
+   做一个合格的前端，gulp自动化构建工具入门教程
 2. 安装gulp：
    （1）、安装全局gulp：终端键入：npm install gulp -g 等待完成；
    （2）、cd进入到项目根目录 -->:终端键入：npm init 【生成node.js插件管理json文件：package.json】：如图：
-   ![做一个合格的前端，gulp自动化构建工具入门教程](http://blog.wxall.top/uploads/allimg/190114/10335M0c-1.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=)
    【注：如图红色箭头、一路enter即可（每一项的意义都很明确，无需解释！我只是提一下license选项，这一项是开源协议：通常的开源协议有：GPL、Apache License、 BSD、ISC.. 等等，有兴趣的可以参考：[开源协议https://baike.baidu.com/item/%E5%BC%80%E6%BA%90%E5%8D%8F%E8%AE%AE/10642383?fr=aladdin]()
 
-（3）、键入：npm install gulp --save-dev 安装gulp到当前目录，等待安装完成。键入gulp-v 出现全局版本，和当前版本，安装完成。如图：
-![做一个合格的前端，gulp自动化构建工具入门教程](http://blog.wxall.top/uploads/allimg/190114/10335K604-2.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=)
+（3）、键入：npm install gulp --save-dev 安装gulp到当前目录，等待安装完成。键入gulp-v 出现全局版本，和当前版本，安装完成。
 
 **键入:gulp，出现：“No gulpfile fount”，说明前三步执行成功。**
 
 (4)、从上面提示可以看出，运行gulp需要gulpfile文件。故而：在当前文件夹新建文件：gulpfile.js备用。
-![做一个合格的前端，gulp自动化构建工具入门教程](http://blog.wxall.top/uploads/allimg/190114/10335J095-3.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=)
 
 **三、gulpfile.js文件编写（重点）**
 
@@ -3749,8 +4109,7 @@ gulp.task("start",function(){
 });
 ```
 
-终端键入：gulp start 执行gulp中的start任务，出现打印，说明gulpfile.js编写没什么问题！如图：
-![做一个合格的前端，gulp自动化构建工具入门教程](http://blog.wxall.top/uploads/allimg/190114/10335K158-4.png?x-oss-process=image/watermark,size_16,text_QDUxQ1RP5Y2a5a6i,color_FFFFFF,t_100,g_se,x_10,y_10,shadow_90,type_ZmFuZ3poZW5naGVpdGk=)
+终端键入：gulp start 执行gulp中的start任务，出现打印，说明gulpfile.js编写没什么问题！
 
 下面开始进入正题，
 压缩、合并等这些操作可以依靠gulp插件完成：插件安装命令：**npm install [module] --save-dev** ;
