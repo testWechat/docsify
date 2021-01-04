@@ -8,6 +8,16 @@
 
 ![](_media/weixin.png)
 
+## vue 显示变量的解决方法
+
+```js
+[v-cloak] {
+	display: none !important;
+}
+v-cloak
+```
+
+
 
 ## js 微信小程序 new Date()
 > 微信小程序 new Date() 方法在iOS设备上无效的问题的解决方法
