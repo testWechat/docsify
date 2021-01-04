@@ -9,6 +9,15 @@
 ![](_media/weixin.png)
 
 
+## js 微信小程序 new Date()
+> 微信小程序 new Date() 方法在iOS设备上无效的问题的解决方法
+
+
+```js
+let date = "2021-01-04 00:00"
+let now = new Date(date.replace(/-/g,'/'))
+```
+
 
 ## js url编码 & 解码
 
