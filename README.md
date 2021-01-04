@@ -1590,39 +1590,64 @@ module.exports = {
 ## 微信小程序封装
 
 ```js
+/*
+ * @Author: aweixin 
+ * @Date: 2021-01-04 10:35:49 
+ * @Last Modified by: aweixin
+ * @Last Modified time: 2021-01-04 11:05:04
+ */
+
 import config from './config.js'
 import app from './g.js'
 
-const formatTime = date => {
-    var date = new Date();
-    const year = date.getFullYear()
-    const month = date.getMonth() + 1
-    const day = date.getDate()
-    const hour = date.getHours()
-    const minute = date.getMinutes()
-    const second = date.getSeconds()
-    const getDay = date.getDay();
 
-    const weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
-    const weekdayen = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-
-
-    // return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-    // return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute].map(formatNumber).join(':')
-    const daystr = [year, month, day].map(formatNumber)
-    // return year + '年' + month + '月' + day + '号';
-    return {
-        week: weekday[getDay],
-        weeken: weekdayen[getDay],
-        date: daystr[0] + '年' + daystr[1] + '月' + daystr[2] + '号'
-    };
+// 小程序主动更新
+function updateManager() {
+    if (!wx.canIUse('getUpdateManager')) {
+        return false;
+    }
+    const updateManager = wx.getUpdateManager();
+    updateManager.onCheckForUpdate(function (res) {
+        // 请求完新版本信息的回调
+        console.log(res.hasUpdate)
+    });
+    updateManager.onUpdateReady(function () {
+        wx.showModal({
+            title: '更新提示',
+            content: '新版本已经准备好，即将重启应用',
+            showCancel: false,
+            success(res) {
+                if (res.confirm) {
+                    // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+                    updateManager.applyUpdate()
+                }
+            }
+        });
+    });
+    updateManager.onUpdateFailed(function () {
+        // 新的版本下载失败
+        wx.showModal({
+            title: '更新提示',
+            content: '新版本下载失败',
+            showCancel: false
+        })
+    });
 }
 
-const formatNumber = n => {
-    n = n.toString()
-    return n[1] ? n : '0' + n
+//  获取元素的信息
+function getRect(obj) {
+    return new Promise((resolve, reject) => {
+        wx.createSelectorQuery().select(obj).boundingClientRect((rect) => {
+            if (rect) {
+                resolve(rect);
+            } else {
+                reject('error');
+            }
+        }).exec();
+    });
 }
 
+// 胶囊按钮与顶部的距离
 function checkFullSucreen() {
     const res = wx.getSystemInfoSync()
     wx.setStorage({
@@ -1653,103 +1678,31 @@ function checkFullSucreen() {
         });
     }
 }
+// 获取时间
+const formatTime = date => {
+    var date = new Date();
+    const year = date.getFullYear()
+    const month = date.getMonth() + 1
+    const day = date.getDate()
+    const hour = date.getHours()
+    const minute = date.getMinutes()
+    const second = date.getSeconds()
+    const getDay = date.getDay();
+
+    const weekday = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+    const weekdayen = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
-/**
- * 小程序主动更新
- */
-function updateManager() {
-    if (!wx.canIUse('getUpdateManager')) {
-        return false;
-    }
-    const updateManager = wx.getUpdateManager();
-    updateManager.onCheckForUpdate(function (res) {
-        // 请求完新版本信息的回调
-        // console.log(res.hasUpdate)
-    });
-    updateManager.onUpdateReady(function () {
-        wx.showModal({
-            title: '更新提示',
-            content: '新版本已经准备好，即将重启应用',
-            showCancel: false,
-            success(res) {
-                if (res.confirm) {
-                    // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
-                    updateManager.applyUpdate()
-                }
-            }
-        });
-    });
-    updateManager.onUpdateFailed(function () {
-        // 新的版本下载失败
-        wx.showModal({
-            title: '更新提示',
-            content: '新版本下载失败',
-            showCancel: false
-        })
-    });
+    // return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
+    return [year, month, day].map(formatNumber).join('-') + ' ' + [hour, minute].map(formatNumber).join(':')
+    const daystr = [year, month, day].map(formatNumber)
+    // return year + '年' + month + '月' + day + '号';
+}
+const formatNumber = n => {
+    n = n.toString()
+    return n[1] ? n : '0' + n
 }
 
-
-
-function __args() {
-    var setting = {};
-    if (arguments.length === 1 && typeof arguments[0] !== 'string') {
-        setting = arguments[0];
-    } else {
-        setting.url = arguments[0];
-        if (typeof arguments[1] === 'object') {
-            setting.data = arguments[1];
-            setting.success = arguments[2];
-        } else {
-            setting.success = arguments[1];
-        }
-    }
-    if (setting.url.indexOf('http://') !== 0) {
-
-        setting.url = setting.url;
-    }
-    return setting;
-}
-
-function __json(method, setting) {
-    setting.method = method;
-    setting.header = {
-        'content-type': 'application/x-www-form-urlencoded'
-    };
-    wx.request(setting);
-}
-
-
-function _get() { // get请求
-    __json('GET', __args.apply(this, arguments));
-}
-
-function _post() { //post请求
-    __json('POST', __args.apply(this, arguments));
-}
-
-function to_date(phpstr, type) { // php时间戳转日期
-    var str = parseInt(phpstr) * 1000;
-    var newDate = new Date(str);
-    var year = newDate.getUTCFullYear(); //取年份
-    var month = (newDate.getUTCMonth() + 1) >= 10 ? (newDate.getUTCMonth() + 1) : '0' + (newDate.getUTCMonth() + 1); //取月份
-    var nowday = newDate.getUTCDate() >= 10 ? newDate.getUTCDate() : '0' + newDate.getUTCDate(); //取天数
-    var hours = newDate.getHours() >= 10 ? newDate.getHours() : '0' + newDate.getHours(); //取小时
-    var minutes = newDate.getMinutes() >= 10 ? newDate.getMinutes() : '0' + newDate.getMinutes(); //取分钟
-    var seconds = newDate.getSeconds() >= 10 ? newDate.getSeconds() : '0' + newDate.getSeconds(); //取秒
-    var newdatastr = '';
-    if (type == 1) { //年月日
-        newdatastr = year + "-" + month + "-" + nowday;
-    }
-    if (type == 2) { //时分秒
-        newdatastr = hours + ":" + minutes + ":" + seconds;
-    }
-    if (type == 3) { //年月日时分秒
-        newdatastr = year + "-" + month + "-" + nowday + " " + hours + ":" + minutes + ":" + seconds;
-    }
-    return newdatastr;
-}
 
 function removeAllSpace(str) { //删除空格
     return str.replace(/\s+/g, "");
@@ -1760,7 +1713,6 @@ function random(Max, Min) { // 随机数
     var Rand = Math.random();
     return (Min + Math.round(Rand * Range));
 }
-
 
 function success(msg, callback) { //显示成功提示框
     wx.showToast({
@@ -1787,7 +1739,6 @@ function alert(msg, callback) { //显示 showModal 提示框
     });
 }
 
-
 function confirm(msg, callback) { //显示 showModal 提示框
     wx.showModal({
         title: '提示',
@@ -1802,8 +1753,6 @@ function confirm(msg, callback) { //显示 showModal 提示框
         }
     });
 }
-
-
 
 function urlEncode(data) { //对象转URL
     var _result = [];
@@ -1971,6 +1920,15 @@ function delsys(key) { //删除本地存储
     wx.removeStorageSync(key);
 }
 
+// 判断链接是否是https
+function ishttps(url) {
+    if (url.slice(0, 5) == 'https') {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function gourl(url) { //跳转到指定页面  如果是网址链接 /pages/webview/index 跳转到这个页面打开
     if (!url || url.length == 0) {
         return false;
@@ -1985,8 +1943,6 @@ function gourl(url) { //跳转到指定页面  如果是网址链接 /pages/webv
         });
     }
 }
-
-
 function gotab(url) { //跳转tabBar页面
     if (!url || url.length == 0) {
         return false;
@@ -2011,8 +1967,6 @@ function htmlEncode(str) {
     s = s.replace(/\"/g, "&quot;");
     return s;
 }
-
-
 /**
  *  转义字符还原成html字符
  */
@@ -2128,16 +2082,6 @@ function getDateDiff(dateStr) {
         return Y + '-' + M + '-' + D + '' + H + ':' + m;
     }
 }
-
-// 对象转json  ，  json转对象
-function json(data, state) {
-    if (state) {
-        return JSON.stringify(data);
-    } else {
-        return JSON.parse(data);
-    }
-}
-
 // 隐藏银行卡号码
 function hidebank(s = "6104021990100952193") {
     return s.replace(/^(\d{8})\d+(\d{4})$/, "$1*******$2");
@@ -2147,41 +2091,15 @@ function hidephone(s = "13335309435") {
     return s.replace(/^(\d{3})\d+(\d{4})$/, "$1****$2");
 }
 
-// 打印数组或字符变量,对象请用log打印
-
-function dump(r, n) {
-    var t = "",
-        o = function (r, n) {
-            for (var t = "", o = 0; o < r; o++) t += n;
-            return t
-        },
-        e = function (r, n, t, c) {
-            n > 0 && n++;
-            var i = o(t * n, c),
-                u = o(t * (n + 1), c),
-                a = "";
-            if ("object" == typeof r && null !== r && r.constructor) {
-                a += "Array\n" + i + "(\n";
-                for (var f in r) "[object Array]" === Object.prototype.toString.call(r[f]) ? (a += u, a += "[", a += f, a += "] => ", a += e(r[f], n + 1, t, c)) : (a += u, a += "[", a += f, a += "] => ", a += r[f], a += "\n");
-                a += i + ")\n"
-            } else a = null === r || void 0 === r ? "" : r.toString();
-            return a
-        };
-    return t = e(r, 0, 4, " "), !0 !== n ? (echo(t), !0) : t
-}
-
-
+// 小程序 rpx 转 px
 function rpxTopx(rpx) {
-    // 小程序 rpx 转 px
     return rpx / 750 * wx.getSystemInfoSync().windowWidth;
 }
-
 
 function toBack() {
     // 返回上一页
     wx.navigateBack();
 }
-
 
 /**
  * scene解码
@@ -2199,36 +2117,37 @@ function scene_decode(e) {
     return data;
 }
 
-function wxPay(result, cb) { // 微信支付
+function wxPay(result) { // 微信支付
     var App = this;
     console.log('微信支付信息', result);
-    wx.requestPayment({
-        timeStamp: result.timestamp,
-        nonceStr: result.nonceStr,
-        package: result.package,
-        signType: 'MD5',
-        paySign: result.paySign,
-        success: function (res) {
-            alert('支付成功');
-            cb && cb();
-        },
-        fail: function (e) {
-            console.log('微信支付错误信息：', e);
-            // App.showError('订单未支付', function () {
-            // const pages = getCurrentPages();
-            // const currentPage = pages[pages.length - 1];
-            // if (currentPage.route == 'pages/order/submit/index') {
-            //     // 跳转到未付款订单
-            //     wx.redirectTo({
-            //         url: '/pages/order/index/index'
-            //     });
-            // }
-            // });
-        },
-    });
+    return new Promise((resolve, reject) => {
+        wx.requestPayment({
+            timeStamp: result.timestamp,
+            nonceStr: result.nonceStr,
+            package: result.package,
+            signType: 'MD5',
+            paySign: result.paySign,
+            success: function (res) {
+                resolve(res);
+            },
+            fail: function (e) {
+                reject(e);
+                console.log('微信支付错误信息：', e);
+                // App.showError('订单未支付', function () {
+                // const pages = getCurrentPages();
+                // const currentPage = pages[pages.length - 1];
+                // if (currentPage.route == 'pages/order/submit/index') {
+                //     // 跳转到未付款订单
+                //     wx.redirectTo({
+                //         url: '/pages/order/index/index'
+                //     });
+                // }
+                // });
+            },
+        });
+    })
+
 }
-
-
 
 function getImageInfo(url) {
     return new Promise((resolve, reject) => {
@@ -2279,16 +2198,8 @@ function getImagesInfo(views, callback) {
         callback && callback(tempFileList);
     })
 }
-// 判断链接是否是https
-function ishttps(url) {
-    if (url.slice(0, 5) == 'https') {
-        return true;
-    } else {
-        return false;
-    }
-}
-// 打开文件预览
 
+// 打开文件预览
 function opfile(url) {
     wx.downloadFile({
         url: url,
@@ -2298,7 +2209,6 @@ function opfile(url) {
             wx.openDocument({
                 filePath: filePath,
                 showMenu: true,
-                // fileType: ['doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx', 'pdf'], //文件类型
                 success: function (res) {
                     console.log('打开文档成功')
                 },
@@ -2313,8 +2223,8 @@ function opfile(url) {
     })
 }
 
-// 微信授权
-function wxlogin(e, cb) {
+// 微信小程序授权登陆
+function wxlogin() {
     if (e.detail.errMsg !== 'getUserInfo:ok') {
         return false;
     }
@@ -2322,75 +2232,74 @@ function wxlogin(e, cb) {
         title: "正在登录",
         mask: true
     });
-    wx.login({
-        success: function (data) {
-            console.log(data);
-            // 执行微信登录
-            app.http.post(config.login, {
-                code: data.code,
-                encryptedData: e.detail.encryptedData,
-                iv: e.detail.iv,
-            }).then((d) => {
-                console.log(d);
-                if (d.code == 0) {
-                    setsys('openid', d.msg.openid);
-                    setsys('userinfo', d.msg);
-                    alert('授权登陆成功');
-                    cb && cb();
-                }
-                if (d.code == 1) {
-                    alert(d.msg);
-                }
-            })
-        }
-    });
+    return new Promise((resolve, reject) => {
+        wx.login({
+            success: function (data) {
+                console.log(data);
+                // 执行微信登录
+                app.http.post(config.login, {
+                    code: data.code,
+                    encryptedData: e.detail.encryptedData,
+                    iv: e.detail.iv,
+                }).then((d) => {
+                    console.log(d);
+                    if (d.code == 0) {
+                        setsys('openid', d.msg.openid);
+                        setsys('userinfo', d.msg);
+                        resolve(d);
+                    }
+                    if (d.code == 1) {
+                        reject(d);
+                    }
+                })
+            }
+        });
+    })
 }
 
-
-/**
- * 手机号授权
- */
-function wxphone(e, cb) {
+// 手机号授权
+function wxphone() {
     if (e.detail.errMsg !== 'getPhoneNumber:ok') {
         return false;
     }
-    // wx.showLoading({
-    //     title: "正在登录",
-    //     mask: true
-    // });
-    wx.login({
-        success: function (data) {
-            console.log(data);
-            // 执行微信登录
-            app.http.post(config.phone, {
-                code: data.code,
-                encryptedData: e.detail.encryptedData,
-                iv: e.detail.iv,
-            }).then((d) => {
-                if (d.code == 0) {
-                    setsys('phone', d.data.phoneNumber);
-                    // alert('授权登陆成功');
-                    cb && cb(d.data.phoneNumber);
-                }
-            })
-        }
+    wx.showLoading({
+        title: "正在登录",
+        mask: true
     });
+    return new Promise((resolve, reject) => {
+        wx.login({
+            success: function (data) {
+                console.log(data);
+                // 执行微信登录
+                app.http.post(config.phone, {
+                    code: data.code,
+                    encryptedData: e.detail.encryptedData,
+                    iv: e.detail.iv,
+                }).then((d) => {
+                    console.log(d);
+                    if (d.code == 0) {
+                        setsys('phone', d.data.phoneNumber);
+                        resolve(d);
+                    }
+                    if (d.code == 1) {
+                        reject(d);
+                    }
+                })
+            }
+        });
+    })
 }
-
-
-function checkOpenid() { //检测用户是否登录
+//检测用户是否登录
+function checkOpenid() {
     if (!getsys('openid')) {
         gourl(`/pages/login/index`);
         return false;
     }
 }
-
-/**
- * 检测时间
-*/
+// 检测时间是否过期
 function checkTime(endtime) {
     console.log(endtime);
-    
+
     var nowD = new Date(), //当前时间
         endD = new Date(endtime); //对比时间
     if (nowD.getTime() > endD.getTime()) {
@@ -2401,48 +2310,43 @@ function checkTime(endtime) {
 
 
 module.exports = {
-    checkTime:checkTime,
-    checkOpenid:checkOpenid,
+    checkTime: checkTime,
+    checkOpenid: checkOpenid,
     opfile: opfile,
     wxlogin: wxlogin,
     wxphone: wxphone,
-    formatTime: formatTime,
-    wxPay: wxPay,
-    hidebank: hidebank,
     getImageInfo: getImageInfo,
     getImagesInfo: getImagesInfo,
+    wxPay: wxPay,
     scene_decode: scene_decode,
-    dump: dump,
+    toBack: toBack,
+    rpxTopx: rpxTopx,
     hidephone: hidephone,
-    to_date: to_date,
+    hidebank: hidebank,
+    updateManager: updateManager,
+    getRect: getRect,
+    checkFullSucreen: checkFullSucreen,
+    formatTime: formatTime,
     removeAllSpace: removeAllSpace,
     random: random,
+    success: success,
+    alert: alert,
+    msg: msg,
+    confirm: confirm,
     urlEncode: urlEncode,
-    checkFullSucreen: checkFullSucreen,
+    uploadFile: uploadFile,
+    chooseImage: chooseImage,
     getsys: getsys,
     setsys: setsys,
     delsys: delsys,
     gourl: gourl,
-    _get: _get,
-    _post: _post,
     gotab: gotab,
-    htmlRestore: htmlRestore,
     htmlEncode: htmlEncode,
-    tapinfo: tapinfo,
-    richtext: richtext,
-    uploadFile: uploadFile,
-    chooseImage: chooseImage,
-    getDateDiff: getDateDiff,
     deleteHtmlTag: deleteHtmlTag,
-    json: json,
-    updateManager: updateManager,
-    ishttps: ishttps,
-    rpxTopx: rpxTopx,
-    success:success,
-    alert:alert,
-    confirm:confirm,
-    msg:msg,
-    toBack: toBack
+    htmlRestore: htmlRestore,
+    richtext: richtext,
+    tapinfo: tapinfo,
+    getDateDiff: getDateDiff,
 }
 ```
 
