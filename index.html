@@ -13,17 +13,21 @@
 	<link rel="stylesheet" href="./lib/gitalk.css">
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/docsify/themes/vue.css">
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+
 </head>
 
 <body>
-	<nav>
-		<a href="#gitalk-container">评论</a>
-	</nav>
 	<div id="app">Loading...</div>
 
 	<script>
 		window.$docsify = {
 			loadSidebar: true,
+			// 页面右侧toc
+			toc: {
+				tocMaxLevel: 2,
+				target: "h2, h3, h4, h5, h6",
+			},
+
 			//	auto2top: true,  
 			//	autoHeader: true,
 			// name: '曾经蜡笔么有小信',
@@ -62,7 +66,6 @@
 
 	<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
 	<script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
-
 
 	<script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1279615888&web_id=1279615888"></script>
 	<script>

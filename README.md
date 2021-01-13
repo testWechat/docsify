@@ -8,6 +8,10 @@
 
 ![](_media/weixin.png)
 
+
+## gitalk-container
+
+
 ## vue 显示变量的解决方法
 
 ```js
@@ -17,6 +21,15 @@
 v-cloak
 ```
 
+## Vue本地部署
+
+> history 模式下 页面空白不显示
+> 修改config 下 `index.js` assetsPublicPath 为:'./'
+
+```js
+  mode: 'history',
+  base: '/2020/7/vuetest', // 需要指定当前网站更目录
+```
 
 
 ## js 微信小程序 new Date()
@@ -292,6 +305,7 @@ function base64ToFile(data) {
 	eruda.init();
 ```
 
+
 ## Python 打包之后缺少模块
 
 ```js
@@ -373,15 +387,7 @@ select选择器返回永远是列表，需要通过下标提取指定对象
 ## [PxLoader](http://thinkpixellab.com/pxloader/)
 > `PxLoader`是一个Javascript库，可帮助您下载图像，声音文件或您在网站上执行特定操作（例如显示用户界面或开始游戏）之前需要的其他任何内容。您可以使用它为HTML5游戏和网站创建预加载器。
 
-## Vue本地部署
 
-> history 模式下 页面空白不显示
-> 修改config 下 `index.js` assetsPublicPath 为:'./'
-
-```js
-  mode: 'history',
-  base: '/2020/7/vuetest', // 需要指定当前网站更目录
-```
 ## 微信H5 关闭页面
 
 ```js
@@ -3042,213 +3048,6 @@ box-align: center;
 .box div:nth-of-type(5){-webkit-box-flex:5;}
 ```
 
-## 优秀的博客
-
-> 前端收集
-
-在前端路上摸索前行，在这里分享自己长期关注的前端开发相关的优秀网站、博客、以及活跃开发者。欢迎更新，以下各排名不分先后顺序。
-
-自己 RSS 长期订阅了一些IT 和技术相关博客，这里是我Feedly 输出的opml，可直接导入一些RSS 阅读器:
-[https://github.com/foru17/luolei-dotfiles/blob/master/feedly.opml](https://github.com/foru17/luolei-dotfiles/blob/master/feedly.opml)
-
-### [前端收集图谱](http://get-set.cn/front-end-collect/)
-
-此部分为[@jikeytang ](https://github.com/jikeytang)贡献
-
-- clone https://github.com/foru17/front-end-collect
-- cd front-end-collect
-- bower install
-- 放入你喜欢的web容器,访问index.html即可
-- 你也直接可以访问: [https://front-end-collect.is26.com](https://front-end-collect.is26.com)
-- 支持Chrome, Firefox and IE10&11以上浏览器
-
-### 聚合&&周报订阅
-
-| 名称                         | 订阅地址                           | 介绍                               |
-| ---------------------------- | ---------------------------------- | ---------------------------------- |
-| **英文推送**                 |                                    |                                    |
-| Html5 Weekly                 | http://html5weekly.com/            | Html 技术类                        |
-| CSS Weekly                   | http://css-weekly.com/             |                                    |
-| Javascript Weekly            | http://javascriptweekly.com/       | JS相关，同样有 html,css 和工具相关 |
-| Web Design Weekly            | http://web-design-weekly.com/      | 设计、技术、技巧、工具聚合         |
-| UX Weekly                    | http://uxwkly.com/                 | 用户体验、网页设计推送             |
-| Web Tools Weekly             | http://webtoolsweekly.com/         | Js，工具推送                       |
-| RESPONSIVE DESIGN NEWSLETTER | http://responsivedesignweekly.com/ | 每周推送一次响应式设计相关         |
-| Tutorialzine                 | http://tutorialzine.com/           | 精品教程和资源推送                 |
-| Sidebar                      | http://sidebar.io/                 | 每天、每半周、每周推送5条设计相关  |
-| The Hacker News Newsletter   | http://www.hackernewsletter.com/   | HN 每周精选                        |
-| Design News                  | https://news.layervault.com/       | F2类资讯聚合                       |
-
-|Css Animations|http://cssanimation.rocks/|关于CSS动画的订阅
-|HACKDESIGN|http://hackdesign.org/|每周发布一个设计类课程|
-|**中文推送**|||
-|稀土:掘金|http://gold.xitu.io/|国内十分用心的开发者技术分享、交流平台|
-|SegmentFault精选 |http://segmentfault.com/|国内开发者技术问答社区每周精选问答|
-|FE Weekly|http://www.feweekly.com/|每周一次，内容主要是英文的，不过有中文导读
-|EchoJs_News|http://www.echojs.com/|每天推送若干好文，都是英文的，JS技术类|
-|?碼天狗週刊 |http://weekly.codetengu.com/|台湾的，一份開發者導向的IT 技術週刊，適合所有患有資訊焦慮症、氣血循環不順以及性受挫的軟體工程師們。|
-|Github Issue Blog Reader|https://gitissue.com|Github Issue 博客聚合平台，每天更新内容，可及时关注阅读|
-
-### 专业博客
-
-注:此处`活跃度`为博客更新频率，`原创度`指的是作者原创或者翻译的文章所占博文比例。请尊重原创，大量转载其他网站资讯的网站和聚合类网站不做推荐。
-
-### 中文博客
-
-| 名称                                                         | 活跃度 | 原创度 | 维护者                                                       | 其他                                             |
-| ------------------------------------------------------------ | ------ | ------ | ------------------------------------------------------------ | ------------------------------------------------ |
-| [W3Cplus](http://www.w3cplus.com/)                           | ★★★★★  | ★★★★★  | 携程 @大漠                                                   | 国内最优秀的前端博客，原创居多                   |
-| [W3Cfuns](http://www.w3cfuns.com/)                           | ★★★★★  | ★★★★☆  | [#](http://www.w3cfuns.com/misc.php?mod=faq&action=faq&id=1) | 专注于web前端开发行业的综合性门户网站            |
-| [前端观察](http://www.qianduan.net/)                         | ★★★★☆  | ★★★★☆  | 腾讯 ISUX @神飞                                              | 曾经最优秀，最近更新不频繁了                     |
-| [腾讯web前端 AlloyTeam 团队](http://www.alloyteam.com/)      | ★★★★   | ★★★★   | [@腾讯AlloyTeam](http://t.qq.com/AlloyTeam)                  | 来自于腾讯SNG(社交网络事业群)                    |
-| [张鑫旭-鑫空间-鑫生活](http://www.zhangxinxu.com/wordpress/) | ★★★★☆  | ★★★★★  | 张鑫旭                                                       | 重构很厉害，不少经典文章经验                     |
-| [ria之家](http://www.36ria.com/)                             | ★★★★☆  | ★★★★☆  | 淘宝 @明河                                                   | #                                                |
-| [大前端](http://www.daqianduan.com/)                         | ★★★★☆  | ★★★★☆  | [#](http://www.cssforest.org/blog/index.php?s=about)         | #                                                |
-| [CSS森林](http://www.cssforest.org/blog/)                    | ★★★★☆  | ★★★★☆  | [关于](http://www.cssforest.org/blog/index.php?s=about)      | #                                                |
-| [设计达人](http://www.shejidaren.com/)                       | ★★★★☆  | ★★★☆☆  | [#](http://www.cssforest.org/blog/index.php?s=about)         | 更新较频繁，但转载也较多                         |
-| [阮一峰博客](http://www.ruanyifeng.com/blog/)                | ★★★★☆  | ★★★☆☆  | [#](http://www.ruanyifeng.com/about.html)                    | 牛人一个                                         |
-| [Be For Web - 为网而生 - 原创译文博客](http://beforweb.com/) | ★★★★☆  | ★★★★☆  | [@C7210](http://weibo.com/c7210)                             | 关注移动应用及互联网产品、用户体验设计、前端开发 |
-
-### 国外博客
-
-| 名称                                                  | 活跃度 | 原创度 | 维护者            | 其他                          |
-| ----------------------------------------------------- | ------ | ------ | ----------------- | ----------------------------- |
-| [Smashing Magazine](http://www.smashingmagazine.com/) | ★★★★★  | ★★★★★  | #                 | 业界权威，web 设计很赞        |
-| [Tuts](http://hub.tutsplus.com/)                      | ★★★★★  | ★★★★★  | -                 | 国外知名开发者网站            |
-| [DeveloperDrive](http://www.developerdrive.com/)      | ★★★★★  | ★★★★★  | -                 | 优质前端技术信息              |
-| [CSS-TRICKS](http://css-tricks.com/)                  | ★★★★★  | ★★★★★  | Chris Coyier      | 左边这位是大神                |
-| [Web Designer Wall](http://webdesignerwall.com/)      | ★★★★★  | ★★★★★  | Nick La.          | 优质 Html5,CSS3等教程         |
-| [Tutorialzine](http://tutorialzine.com/)              | ★★★★★  | ★★★★★  | #                 | 大量 web 教程和资源           |
-| [Inspect Element](http://inspectelement.com/)         | ★★★★★  | ★★★★★  | #                 | CSS,wordpress 相关教程挺多    |
-| [Codrops](http://tympanus.net/codrops/)               | ★★★★★  | ★★★★★  | #                 | 设计、交互、CSS               |
-| [Jake Rutter](http://www.onerutter.com/)              | ★★★★★  | ★★★★★  | Jake Rutter       | Jquery 作者，不解释了         |
-| [Paul Irish](http://www.paulirish.com/)               | ★★★★★  | ★★★★★  | Paul Irish        | 大神,Google Chrome团队,Yeoman |
-| [Krasimir Tsonev](http://krasimirtsonev.com/blog)     | ★★★★★  | ★★★★★  | Krasimir Tsonev   | html5,ccs3,javascript         |
-| [NCZOnline](http://www.nczonline.net/)                | ★★★★★  | ★★★★★  | Nicholas C. Zakas | html5,ccs3,javascript         |
-| [HTML5 Rocks](http://www.html5rocks.com/en/)          | ★★★★★  | ★★★★★  | #                 | html5权威网站                 |
-| [A List Apart](http://alistapart.com/)                | ★★★★★  | ★★★★★  | #                 | 可以改变世界的文章            |
-| [hakim](http://hakim.se/)                             | ★★★★★  | ★★★★★  | HAKIM EL HATTAB   | ccs3,javascript               |
-| [DailyJS](http://dailyjs.com/)                        | ★★★★★  | ★★★★★  | #                 | javascript                    |
-
-### 活跃微博
-
-| ID                                             | 公司     | 简介                                           |
-| ---------------------------------------------- | -------- | ---------------------------------------------- |
-| [@稀土圈](http://weibo.com/xitucircle)         | #        | 强烈推荐，分享一些技术文章和Github项目         |
-| [@w3c中国](http://weibo.com/w3cchina)          | #        | 万维网联盟中国办事处官方微博                   |
-| [@TheFrontEnd](http://weibo.com/javascriptdev) | #        | JavaScript技术资讯、新闻、教程、深度文章。     |
-| [@前端快爆](http://weibo.com/fekb)             | 阿里巴巴 | 有HTML5、CSS3、JS                              |
-| [@HTML5中国](http://e.weibo.com/html5cn)       | #        | 中国www.html5cn.org官方微博                    |
-| [@GitHubDaily](http://e.weibo.com/githubdaily) | #        | 专注于分享 GitHub 最新的优质开源项目:sparkles: |
-
-### 开发者博客
-
-微博微信流行后，明显感觉到写博客的人还是越来越少了，下面推荐的这些开发者属于在网上比较活跃的，或者博客积累了大量优质资源的。
-
-### 国内开发者
-
-国内开发者一块欢迎大家 `Fork`提交推荐，最好能推荐一些在前端界较活跃的的开发者。
-
-| ID         | 博客                                               | 微博                                         | Github                                        | Twitter                                          | 公司                     | 关键字                                         |
-| ---------- | -------------------------------------------------- | -------------------------------------------- | --------------------------------------------- | ------------------------------------------------ | ------------------------ | ---------------------------------------------- |
-| 阮一峰     | [阮一峰博客](http://www.ruanyifeng.com/blog/)      | [@ruanyf](http://weibo.com/ruanyf)           | [@ruanyf](https://github.com/ruanyf)          | [@ruanyf](https://twitter.com/ruanyf)            | 上海金融学院国际金融学院 | 教师，博客写作人，翻译人，《黑客与画家》的译者 |
-| 老赵       | http://blog.zhaojie.me/                            | [@老赵](http://weibo.com/jeffz)              | #                                             | [#]()                                            | 摩根大通（香港）         | 资深码农                                       |
-| 玉伯       | [岁月如歌](http://lifesinger.wordpress.com/)       | [@玉伯也叫射雕](http://weibo.com/lifesinger) | [@lifesinger](https://github.com/lifesinger)  | [@lifesinger](https://twitter.com/lifesinger)    | 支付宝                   | 大牛                                           |
-| kejun      | http://hikejun.com/                                | [@kejunz](http://weibo.com/kejunz)           | [@kejunz](https://github.com/kejun)           | #                                                | 豆瓣                     | 前端大神                                       |
-| 寒冬winter | [winter-cn](http://winter-cn.cnblogs.com/)         | [@寒冬winter](http://weibo.com/wintercn)     | #                                             | #                                                | #                        | #                                              |
-| 左耳朵耗子 | [酷壳](http://coolshell.cn/)                       | [@左耳朵耗子](http://weibo.com/haoel)        | #                                             | [@haoel](https://twitter.com/haoel)              | 淘宝                     | #                                              |
-| fool2fish  | #                                                  | [@fool2fish](http://weibo.com/fool2fish)     | #                                             | #                                                | 支付宝                   | #                                              |
-| 朴灵       | [Html5fiy](http://html5ify.com/)                   | [@朴灵](http://weibo.com/shyvo)              | [JacksonTian](https://github.com/JacksonTian) | #                                                | 阿里巴巴                 | 《深入浅出Node.js》作者,大牛                   |
-| Cat Chen   | [陈广琛](https://catchen.me/)                      | [@CatChen](http://weibo.com/u/1640352230)    | [@CatChen](https://github.com/CatChen)        | [@CatChen](https://twitter.com/CatChen)          | Facebook                 | 大牛                                           |
-| BYVoid     | [Beyond the Void](https://www.byvoid.com/)         | [@BYVoid](http://weibo.com/byvoid)           | [@BYVoid](https://github.com/BYVoid)          | [@BYVoid](https://twitter.com/byvoid)            | Facebook 英国            | 《Node.js 开发指南》作者,大牛                  |
-| 勾三股四   | #                                                  | [@勾三股四](http://weibo.com/mx006)          | #                                             | #                                                | 淘宝                     | #                                              |
-| cnberg     | [冰山一角](http://cnberg.com)                      | [@berg](http://weibo.com/berg)               | @cnberg                                       | [@cnberg]()                                      | 百度                     | 骑行                                           |
-| 小胡子哥   | [barretlee](http://www.barretlee.com/)             | [@Barret李靖](http://weibo.com/173248656)    | [@barretlee](https://github.com/barretlee)    | #                                                | #                        | 阿里巴巴                                       |
-| 小鱼       | [sofish](http://sofish.de/)                        | [@sofish](http://weibo.com/sofish)           | #                                             | #                                                | #                        | 饿了么前端                                     |
-| 屈光宇     | [Jerry Qu的小站](https://imququ.com/)              | [屈光宇](http://weibo.com/jerryqu)           | #                                             | #                                                | #                        | 奇虎360前端,HTTP,Node。js                      |
-| 郭宇       | [Einmal ist keinmal](http://blog.guoyu.me/)        | [@郭宇](http://weibo.com/137601206)          | [@guo-yu](https://github.com/guo-yu)          | [@turingou](https://twitter.com/turingou)        | 今日头条                 | Node.js                                        |
-| 张鑫旭     | [张鑫旭博客](http://www.zhangxinxu.com/wordpress/) | [@张鑫旭](http://weibo.com/zhangxinxu)       | [@zhangxinxu](https://github.com/zhangxinxu)  | [@zhangxinxu](https://twitter.com/zhangxinxu)    | 阅文(腾讯文学) YUED      | 前端开发                                       |
-| 罗磊       | [罗磊的独立博客](https://luolei.org)               | [@罗罗磊磊](http://weibo.com/foru17)         | [@foru17](https://github.com/foru17)          | [@foru17](https://twitter.com/luoleiorg)         | 阅文(腾讯文学) YUED      |                                                |
-| hzlzh      | [自力博客](https://zlz.im)                         | [@hzlzh](http://weibo.com/hzlzh)             | [@hzlzh](http://github.com/hzlzh)             | [@hzlzh](http://twitter.com/hzlzh)               | 腾讯                     | 前端开发                                       |
-| TQ         | http://targetkiller.net/                           | [@Piser-TQ](http://weibo.com/targetkiller)   | [@tqtan](https://twitter.com/tqtan/)          | [@targetkiller](https://github.com/targetkiller) | 腾讯 微信                | 前端                                           |
-| LOO2K      | [LOO2K](http://loo2k.com/blog/)                    | [@LOO2K](http://weibo.com/loo2k)             | [LOO2K](https://github.com/loo2k)             | [LOO2K](https://twitter.com/loo2k/)              | 腾讯 CDC                 | 前端                                           |
-| 大猫       | [意淫笔记](http://bigc.at)                         | [@daemao](http://weibo.com/daemao)           | [@Damao](https://github.com/Damao)            | [@13igcat](https://twitter.com/13igcat)          | 腾讯                     | [知乎](http://www.zhihu.com/people/13igcat)    |
-| C7210      | beforweb.com/                                      | [@C7210](http://weibo.com/c7210)             | [@C7210](http://twittercom/hzlzh)             | [@C7210](http://github.com/hzlzh)                | #                        | UX、交互设计师、视觉与前端                     |
-| kejun      | http://hikejun.com/                                | [#](http://weibo.com/kejun)                  | [#](http://twittercom/kejun)                  | [#](http://github.com/hzlzh)                     | 腾讯                     | 前端开发                                       |
-| lucifr     | http://lucifr.com/                                 | [@lucifr](http://weibo.com/lucifr)           | [@lucifr](http://twittercom/lucifr)           | [@lucifr](http://github.com/lucifr)              | #                        | Mac,ios                                        |
-| smallni    | http://www.smallni.com/                            | [#](http://weibo.com/hzlzh)                  | [@Smallni](https://twitter.com/smallniding/)  | [#](http://github.com/hzlzh)                     | 腾讯                     | 前端开发                                       |
-| qiqiboy    | [qiqiboy](http://www.qiqiboy.com/)                 | [@qiqiboy](http://weibo.com/qiqiboy)         | #                                             | #                                                | 老虎证券                 | 吐槽清理大师开发者                             |
-| 周爱民     | [aimingoo专栏](http://blog.csdn.net/aimingoo/)     | #                                            | #                                             | #                                                | 支付宝                   | JavaScript语言精髓与编程实践作者               |
-| 李松峰     | [为之漫笔](http://www.cn-cuckoo.com)               | #                                            | #                                             | #                                                | #                        | 高程2等书的译者                                |
-| 99css      | [99css](http://www.99css.com/)                     | [@ytzong](http://weibo.com/ytzong)           | #                                             | #                                                | #                        | 腾讯一牛                                       |
-| 秦歌       | [Kaven](http://dancewithnet.com/)                  | #                                            | [@kavenyan](http://twitter.com/kavenyan)      | #                                                | #                        | js语言精粹译者                                 |
-| linxz      | [linxz](http://www.linxz.de/)                      | #                                            | #                                             | #                                                | #                        | css那些事儿的作者                              |
-| Along      | [Along's Blog](http://jinlong.github.io/)          | [@newwave](http://weibo.com/newwave)         | #                                             | #                                                | #                        | Opera 欧朋一牛                                 |
-| 安记       | [cssha](http://www.cssha.com/)                     | [@hanan321](http://weibo.com/hanan321)       | [hanan198501](https://github.com/hanan198501) | #                                                | #                        | 去哪网一牛                                     |
-
-| 余弦 | [EVILCOS](http://evilcos.me/) | [余弦](http://weibo.com/evilcos) | [evilcos](https://github.com/evilcos) | # | [知道创宇](http://www.knownsec.com/) | 安全（黑客）、架构、团队的各种观点与分享 | # | [冯大辉](http://dbanotes.net/) | 现在就职于丁香园 (http://dxy.cn) ，担任技术团队负责人.
-
-### 一些社区
-
-| 名称             | 地址                              | 介绍                                   |
-| ---------------- | --------------------------------- | -------------------------------------- |
-| V2EX             | http://v2ex.com/                  | 小众活跃社区                           |
-| 稀土掘金         | https://juejin.im/                | 程序员同性交友社区                     |
-| 知乎             | http://www.zhihu.com/             | 综合问答社区                           |
-| 前端乱炖         | http://www.html-js.com/           | 专业的前端知识平台                     |
-| segmentfault     | http://segmentfault.com/          | 综合问答社区                           |
-| 果壳问答         | http://www.guokr.com/ask/pending/ | 综合问答社区                           |
-| Ruby             | http://ruby-china.org/            | 同 V2EX 氛围类似，不局限于Ruby         |
-| Node.js 中文社区 | http://cnodejs.org/               | Node.js 国内最活跃的社区               |
-| Code Wall        | https://coderwall.com/            | 国外技术社区                           |
-| DIV.IO           | http://div.io/                    | 国内前端技术社区                       |
-| w3ctech          | http://www.w3ctech.com/           | 国内前端技术社区，常有一些线下活动发布 |
-
-### 企业官方博客
-
-在开头我的 Feedly 订阅 opml 文件里比较全面。
-
-| 名称                                                         | 公司     | 部门 | 活跃度 | 简介                                                         | 微博                                      |
-| ------------------------------------------------------------ | -------- | ---- | ------ | ------------------------------------------------------------ | ----------------------------------------- |
-| [ISUX 社交用户体验设计](http://isux.tencent.com/)            | 腾讯     | ISUX | ★★★★☆  | 负责腾讯的社交网络相关产品的用户体验设计与研究。             | #                                         |
-| [腾讯 CDC](http://cdc.tencent.com/)                          | 腾讯     | CDC  | ★★★★☆  | 简介                                                         | #                                         |
-| [腾讯Web前端 Alloy 团队 Blog](http://www.alloyteam.com/)     | 腾讯     | SNG  | ★★★★☆  | 主要负责手机QQ、QQ互联、腾讯Q+、WebQQ项目的团队。            | [alloyteam](http://weibo.com/alloyteam)   |
-| [TID-财付通设计中心](http://tid.tenpay.com/)                 | 腾讯     | TID  | ★★★★☆  | 简介                                                         | #                                         |
-| [腾讯MXD移动互联网设计中心](http://mxd.tencent.com/)         | 腾讯     | MXD  | ★★★★☆  | 简介                                                         | [@腾讯MXD](http://e.t.qq.com/tencent_mxd) |
-| [凹凸实验室](https://aotu.io/)                               | 京东     | FED  | ★★★★★  | 简凹凸实验室(Aotu.io，英文简称O2) 始建于2015年10月，是一个年轻基情的技术团队。 | #                                         |
-| [微博UDC](http://udc.weibo.com/)                             | 新浪     | UDC  | ★★★★☆  | 简介                                                         | [@微博UDC设计中心](http://weibo.com/sudc) |
-| [新浪UED](http://ued.sina.com.cn/)                           | 新浪     | UED  | ★★★★☆  | 简介                                                         | [#](http://weibo.com/sudc)                |
-| [网易用户体验设计中心](http://uedc.163.com/)                 | 网易     | UED  | ★★★★☆  | 简介                                                         | [#](http://weibo.com/sudc)                |
-| [阿里巴巴（中国站）用户体验设计部博客](http://www.aliued.cn/) | 阿里巴巴 | UED  | ★★★★☆  | 简介                                                         | [@Alibaba-UED](http://weibo.com/aliued)   |
-| [携程UED-携程旅行前端开发团队](http://ued.ctrip.com/blog/)   | 携程网   | UED  | ★★★☆☆  | 携程UED,携程前端开发团队,UED,Javascript,重构,ux              | #                                         |
-| [百度FEX](http://fex.baidu.com/)                             | 百度     | FEX  | ★★★★☆  | 百度前端团队Blog,关注前端技术，还更重视全端及全栈的能力。    | #                                         |
-| [淘宝UED](http://ued.taobao.org/blog/)                       | 淘宝网   | UED  | ★★★★☆  | 用户体验、交互设计、视觉设计、前端技术博客                   | [@淘宝UED](http://weibo.com/taobaoued)    |
-
-### 书籍
-
-| 名称                                                         | 作者                           | 价格       | 出版社         | 简评                                                         |
-| ------------------------------------------------------------ | ------------------------------ | ---------- | -------------- | ------------------------------------------------------------ |
-| [Web标准设计](http://book.douban.com/subject/3327829/)       | 刘杰（嗷嗷）                   | RMB 60.00  | 清华大学出版社 | 基础入门                                                     |
-| [大巧不工 : Web前端设计修炼之道](http://book.douban.com/subject/4914146/) | 赖定清 / 林坚                  | RMB 59.00  | 机械工业出版社 | 适合入门，了解前端全局                                       |
-| [高性能网站建设指南:前端工程师技能精髓](http://book.douban.com/subject/3132277/) | Steve Souders                  | RMB 35.00  | 电子工业出版社 | 能从原理层理解各种方法                                       |
-| [高性能网站建设指南:Web开发者性能优化最佳实践](http://book.douban.com/subject/4719162/) | Steve Souders                  | RMB 49.80  | 电子工业出版社 | #                                                            |
-| [Web站点优化 : Web站点优化](http://book.douban.com/subject/4124141/) | 金                             | RMB 55.00  | #              | #                                                            |
-| [Node.js开发指南](http://book.douban.com/subject/10789820/)  | 郭家寶                         | RMB 45.00  | #              | 作者很牛                                                     |
-| [JavaScript高级程序设计](http://book.douban.com/subject/10546125/) | Nicholas C. Zakas              | RMB 99.00  | 人民邮电出版社 | 适合没事就翻翻                                               |
-| [JavaScript权威指南](http://book.douban.com/subject/2228378/) | 弗拉纳根                       | RMB 109.00 | 机械工业出版社 | 犀牛书                                                       |
-| [JavaScript语言精粹](http://book.douban.com/subject/3590768/) | Douglas Crockford              | RMB 35.00  | 电子工业出版社 | 绝对经典，相信看完后，对Javascript这门语言有了重新认识，原来这个语言是这么的美丽！ |
-| [深入浅出node.js](http://book.douban.com/subject/25768396/)  | 朴灵                           | RMB 69.00  | 人民邮电出版社 | 一本从前端通往全端的好书                                     |
-| [CSS开发王](http://book.douban.com/subject/3137282/)         | 张亚飞                         | RMB 49.00  | 电子工业出版社 | 适合有一定基础后CSS进阶用                                    |
-| [JavaScript DOM编程艺术](http://book.douban.com/subject/6038371/) | Jeremy Keith /Jeffrey Sambells | RMB 49.00  | 人民邮电出版社 | 适合Javascript入门看                                         |
-
-### 线上文档参考
-
-| 书名                   | 地址                                             | 作者                 | 译者                          | 介绍                                                      |
-| ---------------------- | ------------------------------------------------ | -------------------- | ----------------------------- | --------------------------------------------------------- |
-| JavaScript秘密花园     | http://bonsaiden.github.io/JavaScript-Garden/zh/ | 伊沃·韦特泽尔&张易江 | [三生石上](http://sanshi.me/) | 完整书籍，界面美观，有详细demo                            |
-| Material Design 中文版 | http://design.1sters.com/                        | Google设计手册       | 协同翻译                      | Google I/O 2014 发布的 Material Design 官方手册的中文翻译 |
-
-
 ## rem.js 适配
 
 ```js
@@ -3543,443 +3342,6 @@ var $_GET = (function () {
 	}
 })();
 ```
-
-
-## Flex布局新旧混合写法详解（兼容微信）
-
-flex 是个非常好用的属性，如果说有什么可以完全代替 `float` 和 `position` ，那么肯定是非它莫属了（虽然现在还有很多不支持 flex 的浏览器）。然而国内很多浏览器对 flex 的支持都不是很好，这里针对微信内置浏览器写了一套兼容写法。下面入正题。
-
-首先还是从两个版本的语法开始讲吧，这里还是假设 flex 容器为 `.box` ，子元素为 `.item` 。
-
-### 旧语法篇
-
-### 定义容器的 display 属性
-
-
-
-```
-.box{
-    display: -moz-box; /*Firefox*/
-    display: -webkit-box; /*Safari,Opera,Chrome*/
-    display: box;
-}
-```
-
-### 容器属性
-
-#### 1. box-pack 属性
-
-box-pack 定义子元素主轴对齐方式。
-
-```
-.box{
-    -moz-box-pack: center; /*Firefox*/
-    -webkit-box-pack: center; /*Safari,Opera,Chrome*/
-    box-pack: center;
-}
-```
-
-box-pack 属性总共有 4 个值：
-
-```
-.box{
-    box-pack: start | end | center | justify;
-    /*主轴对齐：左对齐（默认） | 右对齐 | 居中对齐 | 左右对齐*/
-}
-```
-
-#### 2. box-align 属性
-
-box-align定义子元素交叉轴对齐方式。
-
-```
-.box{
-    -moz-box-align: center; /*Firefox*/
-    -webkit-box-align: center; /*Safari,Opera,Chrome*/
-    box-align: center;
-}
-```
-
-box-align 属性总共有 5 个值：
-
-```
-.box{
-    box-align: start | end | center | baseline | stretch;
-    /*交叉轴对齐：顶部对齐（默认） | 底部对齐 | 居中对齐 | 文本基线对齐 | 上下对齐并铺满*/
-}
-```
-
-#### 3. box-direction 属性
-
-box-direction 定义子元素的显示方向。
-
-```
-.box{
-    -moz-box-direction: reverse; /*Firefox*/
-    -webkit-box-direction: reverse; /*Safari,Opera,Chrome*/
-    box-direction: reverse;
-}
-```
-
-box-direction 属性总共有 3 个值：
-
-```
-.box{
-    box-direction: normal | reverse | inherit;
-    /*显示方向：默认方向 | 反方向 | 继承子元素的 box-direction*/
-}
-```
-
-#### 4. box-orient 属性
-
-box-orient 定义子元素是否应水平或垂直排列。
-
-```
-.box{
-    -moz-box-orient: horizontal; /*Firefox*/
-    -webkit-box-orient: horizontal; /*Safari,Opera,Chrome*/
-    box-orient: horizontal;
-}
-```
-
-box-orient 属性总共有 5 个值：
-
-```
-.box{
-    box-orient: horizontal | vertical | inline-axis | block-axis | inherit;
-    /*排列方向：水平 | 垂直 | 行内方式排列（默认） | 块方式排列 | 继承父级的box-orient*/
-}
-```
-
-#### 5. box-lines 属性
-
-box-lines 定义当子元素超出了容器是否允许子元素换行。
-
-```
-.box{
-    -moz-box-lines: multiple; /*Firefox*/
-    -webkit-box-lines: multiple; /*Safari,Opera,Chrome*/
-    box-lines: multiple;
-}
-```
-
-box-lines 属性总共有 2 个值：
-
-```
-.box{
-    box-lines: single | multiple;
-    /*允许换行：不允许（默认） | 允许*/
-}
-```
-
-### 子元素属性
-
-#### 1. box-flex 属性
-
-box-flex 定义是否允许当前子元素伸缩。
-
-```
-.item{
-    -moz-box-flex: 1.0; /*Firefox*/
-    -webkit-box-flex: 1.0; /*Safari,Opera,Chrome*/
-    box-flex: 1.0;
-}
-```
-
-box-flex 属性使用一个浮点值：
-
-```
-.item{
-    box-flex: <value>;
-    /*伸缩：<一个浮点数，默认为0.0，即表示不可伸缩，大于0的值可伸缩，柔性相对>*/
-}
-```
-
-#### 2.box-ordinal-group 属性
-
-box-ordinal-group 定义子元素的显示次序，数值越小越排前。
-
-```
-.item{
-    -moz-box-ordinal-group: 1; /*Firefox*/
-    -webkit-box-ordinal-group: 1; /*Safari,Opera,Chrome*/
-    box-ordinal-group: 1;
-}
-```
-
-box-direction 属性使用一个整数值：
-
-```
-.item{
-    box-ordinal-group: <integer>;
-    /*显示次序：<一个整数，默认为1，数值越小越排前>*/
-}
-```
-
-## 新版语法
-
-### 定义容器的 display 属性
-
-```
-.box{
-    display: -webkit-flex; /*webkit*/
-    display: flex;
-}
-
-/*行内flex*/
-.box{
-    display: -webkit-inline-flex; /*webkit*/
-    display:inline-flex;
-}
-```
-
-### 容器样式
-
-```
-.box{
-    flex-direction: row | row-reverse | column | column-reverse;
-    /*主轴方向：左到右（默认） | 右到左 | 上到下 | 下到上*/
-
-    flex-wrap: nowrap | wrap | wrap-reverse;
-    /*换行：不换行（默认） | 换行 | 换行并第一行在下方*/
-
-    flex-flow: <flex-direction> || <flex-wrap>;
-    /*主轴方向和换行简写*/
-
-    justify-content: flex-start | flex-end | center | space-between | space-around;
-    /*主轴对齐方式：左对齐（默认） | 右对齐 | 居中对齐 | 两端对齐 | 平均分布*/
-
-    align-items: flex-start | flex-end | center | baseline | stretch;
-    /*交叉轴对齐方式：顶部对齐（默认） | 底部对齐 | 居中对齐 | 上下对齐并铺满 | 文本基线对齐*/
-
-    align-content: flex-start | flex-end | center | space-between | space-around | stretch;
-    /*多主轴对齐：顶部对齐（默认） | 底部对齐 | 居中对齐 | 上下对齐并铺满 | 上下平均分布*/
-}
-```
-
-### 子元素属性
-
-```
-.item{
-    order: <integer>;
-    /*排序：数值越小，越排前，默认为0*/
-
-    flex-grow: <number>; /* default 0 */
-    /*放大：默认0（即如果有剩余空间也不放大，值为1则放大，2是1的双倍大小，以此类推）*/
-
-    flex-shrink: <number>; /* default 1 */
-    /*缩小：默认1（如果空间不足则会缩小，值为0不缩小）*/
-
-    flex-basis: <length> | auto; /* default auto */
-    /*固定大小：默认为0，可以设置px值，也可以设置百分比大小*/
-
-    flex: none | [ <'flex-grow'> <'flex-shrink'>? || <'flex-basis'> ]
-    /*flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto，*/
-
-    align-self: auto | flex-start | flex-end | center | baseline | stretch;
-    /*单独对齐方式：自动（默认） | 顶部对齐 | 底部对齐 | 居中对齐 | 上下对齐并铺满 | 文本基线对齐*/
-}
-```
-
-## 兼容写法
-
-首先是定义容器的 `display` 属性：
-
-```
-.box{
-    display: -webkit-box; /* 老版本语法: Safari, iOS, Android browser, older WebKit browsers. */
-    display: -moz-box; /* 老版本语法: Firefox (buggy) */
-    display: -ms-flexbox; /* 混合版本语法: IE 10 */
-    display: -webkit-flex; /* 新版本语法: Chrome 21+ */
-    display: flex; /* 新版本语法: Opera 12.1, Firefox 22+ */
-}
-```
-
-由于旧版语法并没有列入 W3C 标准，所以这里不用写 `display:box` ，下面的语法也是一样的。
-
-这里还要注意的是，如果子元素是行内元素，在很多情况下都要使用 `display: block` 或 `display: inline-block` 把行内子元素变成块元素（例如使用 `box-flex` 属性），这也是旧版语法和新版语法的区别之一。
-
-### 子元素主轴对齐方式
-
-```
-.box{
-    -webkit-box-pack: center;
-    -moz-justify-content: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-}
-```
-
-
-![](../_media/fx01.png)
-
-这里旧版语法有 4 个参数，而新版语法有 5 个参数，兼容写法新版语法的 `space-around` 是不可用的：
-
-```
-.box{
-    box-pack: start | end | center | justify;
-    /*主轴对齐：左对齐（默认） | 右对齐 | 居中对齐 | 左右对齐*/
-
-    justify-content: flex-start | flex-end | center | space-between | space-around;
-    /*主轴对齐方式：左对齐（默认） | 右对齐 | 居中对齐 | 两端对齐 | 平均分布*/
-}
-```
-
-### 子元素交叉轴对齐方式
-
-```
-.box{
-    -webkit-box-align: center;
-    -moz-align-items: center;
-    -webkit-align-items: center;
-    align-items: center;
-}
-```
-
-
-![](../_media/fx03.png)
-
-这里的参数除了写法不同，其实是功能是一样的：
-
-```
-.box{
-    box-align: start | end | center | baseline | stretch;
-    /*交叉轴对齐：顶部对齐（默认） | 底部对齐 | 居中对齐 | 文本基线对齐 | 上下对齐并铺满*/
-
-    align-items: flex-start | flex-end | center | baseline | stretch;
-    /*交叉轴对齐方式：顶部对齐（默认） | 底部对齐 | 居中对齐 | 上下对齐并铺满 | 文本基线对齐*/
-}
-```
-
-### 子元素的显示方向
-
-子元素的显示方向可通过 `box-direction + box-orient + flex-direction` 实现，下面请看实例：
-
-#### 左到右
-
-```
-.box{
-    -webkit-box-direction: normal;
-    -webkit-box-orient: horizontal;
-    -moz-flex-direction: row;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-}
-```
-
-![](../_media/fx051.png)
-
-#### 右到左
-
-```
-.box{
-    -webkit-box-pack: end;
-    -webkit-box-direction: reverse;
-    -webkit-box-orient: horizontal;
-    -moz-flex-direction: row-reverse;
-    -webkit-flex-direction: row-reverse;
-    flex-direction: row-reverse;
-}
-```
-
-这里补充说明一点： box 写法的 `box-direction` 只是改变了子元素的排序，并没有改变对齐方式，需要新增一个 `box-pack` 来改变对齐方式。
-
-
-![](../_media/fx02.png)
-
-#### 上到下
-
-```
-.box{
-    -webkit-box-direction: normal;
-    -webkit-box-orient: vertical;
-    -moz-flex-direction: column;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-}
-```
-
-![](../_media/fx06.png)
-
-
-#### 下到上
-
-```
-.box{
-    -webkit-box-pack: end;
-    -webkit-box-direction: reverse;
-    -webkit-box-orient: vertical;
-    -moz-flex-direction: column-reverse;
-    -webkit-flex-direction: column-reverse;
-    flex-direction: column-reverse;
-}
-```
-
-![](../_media/fx04.png)
-
-### 是否允许子元素伸缩
-
-```
-.item{
-    -webkit-box-flex: 1.0;
-    -moz-flex-grow: 1;
-    -webkit-flex-grow: 1;
-    flex-grow: 1;
-}
-```
-
-![](../_media/fx10.png)
-
-```
-.item{
-    -webkit-box-flex: 1.0;
-    -moz-flex-shrink: 1;
-    -webkit-flex-shrink: 1;
-    flex-shrink: 1;
-}
-```
-
-![](../_media/fx15.png)
-
-上面是允许放大，box语法中 `box-flex` 如果不是 0 就表示该子元素允许伸缩，而 flex 是分开的，上面 `flex-grow` 是允许放大（默认不允许），下面的 `flex-shrink` 是允许缩小（默认允许）。`box-flex` 默认值为 0 ，也就是说，在默认的情况下，在两个浏览器中的表现是不一样的：
-
-![](../_media/fx11.png)
-
-这里还有一点，就是新旧语法的算法是不一样的，假设 `box-flex` 的值不等于 0 ，旧语法中，如果有多余的空间，`box-flex` 的值越大，说明空白部分的占比越多，反之亦然：
-
-![](../_media/fx13.png)
-
-而新版的语法中，放大的比例是直接按 `flex-grow` 的值来分配的，`flex-grow` 的缩放会覆盖 `flex-shrink: 0`，看例子：
-
-![](../_media/fx14.png)
-
-参数：
-
-```
-.item{
-    box-flex: <value>;
-    /*伸缩：<一个浮点数，默认为0.0，即表示不可伸缩，大于0的值可伸缩，柔性相对>*/
-
-    flex-grow: <number>; /* default 0 */
-    /*放大：默认0（即如果有剩余空间也不放大，值为1则放大，2是1的双倍大小，以此类推）*/
-
-    flex-shrink: <number>; /* default 1 */
-    /*缩小：默认1（如果空间不足则会缩小，值为0不缩小）*/
-}
-```
-
-### 子元素的显示次序
-
-```
-.item{
-    -webkit-box-ordinal-group: 1;
-    -moz-order: 1;
-    -webkit-order: 1;
-    order: 1;
-}
-```
-
-![](../_media/fx16.png)
 
 
 ## PHP 过滤微信昵称表情
@@ -4528,7 +3890,6 @@ gulp.task("default",function(callback){
 
 至此gulp的基本使用已经没啥问题了！
 
-## less 入门
 
 官网地址：<http://lesscss.cn/>
 我们都知道写 `CSS` 代码是有些枯燥无味的，尤其是面对那些成千上万行 `CSS` 代码的项目。你始终在相同的地方使用相同的规则并且在你的编译器中搜索和替换每次颜色的变化。这需要很多的努力和规则来保持你的 `CSS` 可维护，但它本不应该这样的。
@@ -5152,7 +4513,6 @@ D-->>A: Dashed open arrow
     C -->|Two| E[Result two]
 ```
 
-### 更多语法参考：[Mermaid 流程图语法参考](https://knsv.github.io/mermaid/#flowcharts-basic-syntax)
 
 ### 11. Mermaid 序列图
 
@@ -5568,7 +4928,7 @@ n latest
 
 
 
-  ## Dos—Lsp修复
+## Dos—Lsp修复
 
 打开电脑，进入命令提示符窗口，快捷键win+r.
 在窗口中输入“cmd”进入命令符窗口。
