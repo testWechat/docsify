@@ -11,17 +11,20 @@
 		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<link rel="stylesheet" href="./lib/vue.css">
 	<link rel="stylesheet" href="./lib/gitalk.css">
+	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.css">
+	<style>
+		#gitalk-container {
+			position: fixed;
+			bottom: 0;
+			width: 100%;
+			z-index: 99;
+		}
+	</style>
 </head>
 
 <body>
+	<div id="gitalk-container"></div>
 	<div id="app">正在加载,请稍等...</div>
-
-	<script src="./lib/docsify.min.js"></script>
-	<script src="./lib/docsify-copy-code.min.js"></script>
-	<script src="./lib/zoom-image.js"></script>
-	<script src="./lib/disqus.min.js"></script>
-	<script src="./lib/search.min.js"></script>
-	<script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1279615888&web_id=1279615888"></script>
 
 	<script>
 		window.$docsify = {
@@ -45,8 +48,39 @@
 				placeholder: {
 					'/': 'Search'
 				}
+			},
+			count: {
+				countable: true,
+				fontsize: '0.9em',
+				color: 'rgb(90,90,90)',
+				language: 'chinese'
 			}
 		}
+	</script>
+
+	<script src="./lib/docsify.min.js"></script>
+	<script src="./lib/docsify-copy-code.min.js"></script>
+	<script src="./lib/zoom-image.js"></script>
+	<script src="./lib/disqus.min.js"></script>
+	<script src="./lib/search.min.js"></script>
+	<script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+
+	<script src="//cdn.jsdelivr.net/npm/docsify/lib/plugins/gitalk.min.js"></script>
+	<script src="//cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+
+
+	<script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1279615888&web_id=1279615888"></script>
+	<script>
+		const gitalk = new Gitalk({
+			clientID: 'Iv1.6a7f7f708e2437b0',
+			clientSecret: '6441882b22b963b337bcaca2a71a2e5c86d17064 ',
+			repo: 'aweixin.github.io',
+			owner: 'aweixin',
+			admin: ['aweixin'],
+			// facebook-like distraction free mode
+			distractionFreeMode: false
+		})
+		gitalk.render('gitalk-container');
 	</script>
 </body>
 
