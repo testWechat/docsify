@@ -1443,8 +1443,6 @@ grace.page({
 ## 小程序canvas api生成分享海报图 解决方案
 
 
-  ![img](http://blog.wxall.top/uploads/180802/2-1PP21IJ4562.png)
-
 实际上使用了小程序提供的绘图api，文档在此 [小程序画布](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/reference.html)[canvas ](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/reference.html)[API](https://developers.weixin.qq.com/miniprogram/dev/api/canvas/reference.html)，其他还有getImageInfo和saveImageToPhotosAlbum等。
 
 在wxml准备好一个画布，给定一个画布id，宽高见js部分。

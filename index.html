@@ -1,48 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>曾经蜡笔么有小信</title>
-  <link rel="shortcut icon" href="./_media/favicon.ico" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <meta name="description" content="Description">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <link rel="stylesheet" href="./lib/vue.css">
-  <link rel="stylesheet" href="./lib/gitalk.css">
-</head>
-<body>
-  <div id="app">正在加载,请稍等...</div>
 
-  <script>
-    window.$docsify = {
-		loadSidebar: true,
-		//	auto2top: true,  
-		//	autoHeader: true,
-		//	name: '曾经蜡笔么有小信',  
-		disqus: 'shortname',
-		repo: 'https://github.com/aweixin/aweixin.github.io',
-		coverpage: true,
-		executeScript: true,
-		loadNavbar: true,
-		mergeNavbar: true,
-		routerMode: 'hash', // default: 'hash'
-		subMaxLevel:2,
-		search: {
-			noData: {
-				'/': 'No results!'
-			},
-			paths: 'auto',
-			placeholder: {
-				'/': 'Search'
-			}
-		},
-  }
-  </script>
+<head>
+	<meta charset="UTF-8">
+	<title>曾经蜡笔么有小信</title>
+	<link rel="shortcut icon" href="./_media/favicon.ico" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+	<meta name="description" content="Description">
+	<meta name="viewport"
+		content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<link rel="stylesheet" href="./lib/vue.css">
+	<link rel="stylesheet" href="./lib/gitalk.css">
+</head>
+
+<body>
+	<div id="app">正在加载,请稍等...</div>
+
 	<script src="./lib/docsify.min.js"></script>
 	<script src="./lib/docsify-copy-code.min.js"></script>
 	<script src="./lib/zoom-image.js"></script>
 	<script src="./lib/disqus.min.js"></script>
 	<script src="./lib/search.min.js"></script>
+	<script src="//unpkg.com/docsify-count/dist/countable.js"></script>
+	<script type="text/javascript" src="https://v1.cnzz.com/z_stat.php?id=1279615888&web_id=1279615888"></script>
 
+	<script>
+		window.$docsify = {
+			loadSidebar: true,
+			//	auto2top: true,  
+			//	autoHeader: true,
+			// name: '曾经蜡笔么有小信',
+			disqus: 'shortname',
+			repo: 'https://github.com/aweixin/aweixin.github.io',
+			coverpage: true,
+			executeScript: true,
+			// loadNavbar: true,
+			mergeNavbar: true,
+			routerMode: 'hash', // default: 'hash'
+			subMaxLevel: 2,
+			search: {
+				noData: {
+					'/': 'No results!'
+				},
+				paths: 'auto',
+				placeholder: {
+					'/': 'Search'
+				}
+			},
+			count: {
+				countable: true,
+				position: 'top',
+				margin: '10px',
+				float: 'right',
+				fontsize: '0.9em',
+				color: 'rgb(90,90,90)',
+				language: 'chinese',
+				localization: {
+					words: "",
+					minute: ""
+				},
+				isExpected: true
+			}
+		}
+	</script>
 </body>
+
 </html>
