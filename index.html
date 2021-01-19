@@ -21,24 +21,20 @@
 
 	<script>
 		window.$docsify = {
+			name: 'Ava',
+			auto2top: true,
+			coverpage: true,
+			executeScript: true,
 			loadSidebar: true,
-			// 页面右侧toc
+			loadNavbar: true,
+			mergeNavbar: true,
+			maxLevel: 4,
+			subMaxLevel: 2,
 			toc: {
 				tocMaxLevel: 2,
 				target: "h2, h3, h4, h5, h6",
 			},
-
-			//	auto2top: true,  
-			//	autoHeader: true,
-			// name: '曾经蜡笔么有小信',
-			// disqus: 'shortname',
 			repo: 'https://github.com/aweixin/aweixin.github.io',
-			coverpage: true,
-			executeScript: true,
-			// loadNavbar: true,
-			mergeNavbar: true,
-			routerMode: 'hash', // default: 'hash'
-			subMaxLevel: 2,
 			search: {
 				noData: {
 					'/': 'No results!'
