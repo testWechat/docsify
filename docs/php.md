@@ -115,3 +115,88 @@ DB::table('users')
             ->update(['votes' => 1]);
 ```
 
+> 创建数据库低版本  utf8mb4_unicode_ci
+
+```php
+// app/Providers/AppServiceProvider.php
+
+use Illuminate\Support\Facades\Schema;
+
+/**
+ * 引导任何应用程序服务
+ *
+ * @return void
+ */
+public function boot()
+{
+    Schema::defaultStringLength(191);
+}
+```
+
+> 数据库测试 生成模拟数据
+
+```php
+
+$factory->define(App\User::class, function (Faker\Generator $faker) {
+    static $password;
+
+    return [
+        'name' => $faker->name,
+        'email' => $faker->unique()->safeEmail,
+        'password' => $password ?: $password = bcrypt('secret'),
+        'remember_token' => str_random(10),
+    ];
+});
+
+php artisan tinker;
+
+// 创建 3 个 App\User 实例
+$users = factory(App\User::class, 3)->create();
+
+```
+
+> 用户登录验证
+
+```php
+use Auth;
+
+public function login(Request $request)
+{
+    $data = [
+        'username'=>$request->username,
+        'password'=>$request->password,
+    ];
+    $res = Auth::guard('admin')->attempt($data);
+
+    if($res){
+        return [
+            'code'=>0,
+            'msg'=>'登录成功',
+            'url'=>route('admin.index')
+        ];
+    }
+    return [
+        'code'=>1,
+        'msg'=>'帐号或密码错误'
+    ];
+}
+```
+
+>  中间件
+
+```php
+//	 创建中间件
+php artisan make:middleware CheckAge
+//	路由分配多个中间件：
+
+Route::get('/',function(){
+　　//
+})->middleware('first','second');
+
+Route::group(['middleware'=>['web']],function(){
+　　//
+})
+
+//	app/Http/Kernel.php 配置中间件
+   
+```
