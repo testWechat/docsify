@@ -63,23 +63,30 @@ php artisan make:model Models/Article -m
 //	参数配置
 //	模型文件采用单数形式命名，而数据表采用复数形式命名。所以一个Article模型默认对应Articles 数据表，如果我们在开发中需要指定表的话。
  
-//指定表名
+//关联到模型的数据表
 protected $table = 'article2';
  
 //指定主键
 protected $primaryKey = 'article_id';
  
-//是否开启时间戳
-protected $timestamps = false;
+//表明模型是否应该被打上时间戳
+public $timestamps = true;
  
-//设置时间戳格式为Unix
+//模型日期列的存储格式
 protected $dateFormat = 'U';
  
-//过滤字段，只有包含的字段才能被更新
-protected $fillable = ['title','content'];
+/**
+     * 可以被批量赋值的属性.
+     * @var array
+*/
+protected $fillable = ['name'];
  
 //隐藏字段
 protected $hidden = ['password'];
+/**
+	* 不能被批量赋值的属性
+*/
+protected $guarded = ['price'];
 
 ```
 
@@ -200,3 +207,100 @@ Route::group(['middleware'=>['web']],function(){
 //	app/Http/Kernel.php 配置中间件
    
 ```
+
+> 时间戳  修改laravel的时区设置 
+
+```php
+
+//  默认使用时间戳戳功能
+public $timestamps = true;
+//  模型日期列的存储格式
+protected $dateFormat = 'U';
+
+//目录修改	app\config\app.php
+'timezone' => 'PRC',
+
+$res = Banner::find(58);
+echo $res->created_at->format('Y-m-d H:i:s');
+```
+
+>  Laravel 内置的 Eloquent ORM  
+
+```php
+/**
+* 查询所有数据
+*/
+$res = Banner::all();
+/**
+* 根据ID 查询数据
+*/
+$res = Banner::find(1);
+$res = Banner::findOrfail(10);
+$res = Banner::where("id", "<", "10")->first();
+$res = Banner::all()->min('id');
+$res = Banner::count();
+/**
+* 新增数据
+*/
+$res = New Banner();
+$res->title = rand(1, 9999999);
+$res->state = '1';
+$bool = $res->save();
+dd($bool);
+
+// 指定可以批量设置字段
+protected $fillable = ['title','state'];
+Banner::create(['title' => '123123', 'state' => '1']);
+
+
+// 通过属性获取航班, 如果不存在则创建...
+$flight = App\Flight::firstOrCreate(['name' => 'Flight 10']);
+
+// 通过name获取航班，如果不存在则通过name和delayed属性创建...
+$flight = App\Flight::firstOrCreate(
+    ['name' => 'Flight 10'], ['delayed' => 1]
+);
+
+// 通过属性获取航班, 如果不存在初始化一个新的实例...
+$flight = App\Flight::firstOrNew(['name' => 'Flight 10']);
+
+// 通过name获取，如果不存在则通过name和delayed属性创建新实例...
+$flight = App\Flight::firstOrNew(
+    ['name' => 'Flight 10'], ['delayed' => 1]
+);
+
+
+// 更新数据
+// 如果没有匹配的模型则创建之
+$flight = App\Flight::updateOrCreate(
+    ['departure' => 'Oakland', 'destination' => 'San Diego'],
+    ['price' => 99]
+);
+
+
+// 删除数据
+$flight = App\Flight::find(1);
+$flight->delete();
+
+App\Flight::destroy(1);
+App\Flight::destroy([1, 2, 3]);
+App\Flight::destroy(1, 2, 3);
+
+$deletedRows = App\Flight::where('active', 0)->delete();
+```
+
+> 模板继承Blade
+
+```php
+@section
+@yield
+@extends
+@prent
+```
+
+> Request
+
+```php
+
+```
+
