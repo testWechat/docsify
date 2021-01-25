@@ -298,9 +298,17 @@ $deletedRows = App\Flight::where('active', 0)->delete();
 @prent
 ```
 
-> Request
+> 全局 Session 辅助函数
 
 ```php
-
+Route::get('home', function () {
+    // 从session中获取数据...
+    $value = session('key');
+    // 指定默认值...
+    $value = session('key', 'default');
+    // 存储数据到session...
+    session(['key' => 'value']);
+});
 ```
 
+> 
