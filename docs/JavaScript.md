@@ -609,3 +609,122 @@ function getRndInteger (min, max) {
         $(".am-toast-mask .msg").html(text);
     }
 ```
+
+## $.extend Or $.fn.extend
+
+```javascript
+jQuery.extend({
+    min: function (a, b) { return a < b ? a : b; },
+    max: function (a, b) { return a > b ? a : b; }
+});
+jQuery.min(2, 3); //  2 
+jQuery.max(4, 5); //  5
+
+
+$.fn.extend({
+     check: function() {
+         return this.each(function() {
+             this.checked = true;
+         });
+     },
+     uncheck: function() {
+         return this.each(function() {
+             this.checked = false;
+         });
+     }
+ });
+// 使用新创建的.check() 方法
+$( "input[type='checkbox']" ).check();
+
+```
+
+## 微信摇一摇
+
+```javascript
+
+    var SHAKE_THRESHOLD = 1000;
+    var last_update = 0;
+    var x = y = z = last_x = last_y = last_z = 0;
+    function shakeInit() {
+        if (window.DeviceMotionEvent) {
+            window.addEventListener('devicemotion', deviceMotionHandler, false);
+        } else {
+            // alert('not support mobile event');
+        }
+    }
+    function deviceMotionHandler(eventData) {
+        var acceleration = eventData.accelerationIncludingGravity;//eventData.acceleration;
+        var curTime = new Date().getTime();
+        if ((curTime - last_update) > 100) {
+            var diffTime = curTime - last_update;
+            last_update = curTime;
+            x = acceleration.x;
+            y = acceleration.y;
+            z = acceleration.z;
+            var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+            if (speed > SHAKE_THRESHOLD) {
+                yaoyiyao();
+            }
+        }
+        last_x = x;
+        last_y = y;
+        last_z = z;
+    }
+    shakeInit();
+
+    // 安卓手机均可正常实现摇一摇，以下代码针对ios手机做授权处理
+
+    function iosGrantedTips() {
+        var ua = navigator.userAgent.toLowerCase(); //判断移动端设备，区分android，iphone，ipad和其它
+        if (ua.indexOf("like mac os x") > 0) { //判断苹果设备
+            // 正则判断手机系统版本
+            var reg = /os [\d._]*/gi;
+            var verinfo = ua.match(reg);
+            var version = (verinfo + "").replace(/[^0-9|_.]/ig, "").replace(/_/ig, ".");
+            // alert(version);
+            // var arr=version.split(".");
+            // console.log(arr[0]+"."+arr[1]+"."+arr[2]) //获取手机系统版本
+            // if (arr[0]>12&&arr[1]>2) {  //对13.3以后的版本处理,包括13.3
+            if (parseFloat(version) >= 13.3) {  //对13.3以后的版本处理,包括13.3
+                DeviceMotionEvent.requestPermission().then(permissionState => {
+                    if (permissionState === 'granted') { //已授权
+                        shakeInit() //摇一摇
+                    } else if (permissionState === 'denied') {// 打开的链接不是https开头
+                        // alert("当前IOS系统拒绝访问动作与方向。请退出微信，重新进入活动页面获取权限。")
+                    }
+                }).catch((err) => {
+                    // alert("用户未允许权限")
+                    //======这里可以防止重复授权，需要改动，因为获取权限需要点击事件才能触发，所以这里可以改成某个提示框===//
+                    console.log("由于IOS系统需要手动获取访问动作与方向的权限，为了保证摇一摇正常运行，请在访问提示中点击允许！")
+                    ios13granted();
+                });
+            } else {  //13.3以前的版本
+                // alert("苹果系统13.3以前的版本")
+            }
+        }
+    }
+    function ios13granted() {
+        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+            DeviceMotionEvent.requestPermission().then(permissionState => {
+                if (permissionState === 'granted') {
+                    shakeInit() //摇一摇
+                } else if (permissionState === 'denied') {// 打开的链接不是https开头
+                    // alert("当前IOS系统拒绝访问动作与方向。请退出微信，重新进入活动页面获取权限。")
+                }
+            }).catch((error) => {
+                // alert("请求设备方向或动作访问需要用户手势来提示")
+            })
+        } else {
+            // 处理常规的非iOS 13+设备
+            // alert("处理常规的非iOS 13+设备")
+        }
+    }
+    iosGrantedTips();
+
+
+
+	$("#gamestart").on("click",function(){
+        ios13granted(); // 默认调用获取用户权限
+    });
+```
+

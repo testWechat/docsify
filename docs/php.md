@@ -93,14 +93,17 @@ protected $guarded = ['price'];
 > 创建数据库表结构
 
 ```php
+//	创建数据库表
 php artisan make:migration create_users_table
-//数据库运行迁移
+//	数据库运行迁移
 php artisan migrate
-//数据填充
+//	创建一个填充文件，并完善填充文件
 php artisan make:seeder WechatTableSeeder
-//执行默认数据填充
+//	执行默认数据填充
 php artisan db:seed
-//清空默认的数据 ，重新写入
+//	执行单个填充文件
+php artisan db:seed --class=WechatTableSeeder
+//	清空默认的数据 ，重新写入
 php artisan migrate:refresh --seed
 ```
 
