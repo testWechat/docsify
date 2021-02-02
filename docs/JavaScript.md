@@ -774,7 +774,7 @@ function pageLoading(resources) {
 }
 ```
 
-##	设置动画延迟
+##	设置css3动画
 
 ```js
 
