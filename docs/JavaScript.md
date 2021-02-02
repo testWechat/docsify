@@ -535,82 +535,82 @@ function getRndInteger (min, max) {
 ## 弹窗提示
 
 ```css
-    .am-toast.am-toast-mask {
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        left: 0;
-        top: 0;
-        position: fixed;
-        z-index: 9999;
-        width: 100%;
-    }
+.am-toast.am-toast-mask {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+}
 
-    .am-toast.am-toast-mask,
-    .am-toast.am-toast-nomask {
-        -webkit-transform: translateZ(1px);
-        transform: translateZ(1px)
-    }
+.am-toast.am-toast-mask,
+.am-toast.am-toast-nomask {
+    -webkit-transform: translateZ(1px);
+    transform: translateZ(1px)
+}
 
-    .am-toast.am-toast-nomask {
-        position: fixed;
-        max-width: 50%;
-        width: auto;
-        left: 50%;
-        top: 50%
-    }
+.am-toast.am-toast-nomask {
+    position: fixed;
+    max-width: 50%;
+    width: auto;
+    left: 50%;
+    top: 50%
+}
 
-    .am-toast.am-toast-nomask .am-toast-notice {
-        -webkit-transform: translateX(-50%) translateY(-50%);
-        transform: translateX(-50%) translateY(-50%)
-    }
+.am-toast.am-toast-nomask .am-toast-notice {
+    -webkit-transform: translateX(-50%) translateY(-50%);
+    transform: translateX(-50%) translateY(-50%)
+}
 
-    .am-toast-notice-content .am-toast-text {
-        min-width: 160px;
-        border-radius: 3px;
-        color: #fff;
-        background-color: rgba(58, 58, 58, .9); 
-        /*background: #000;*/
-        /*line-height: 3.5;*/
-        padding: 20px 15px;
-        text-align: center;
-        font-size: 26px;
-    }
+.am-toast-notice-content .am-toast-text {
+    min-width: 160px;
+    border-radius: 3px;
+    color: #fff;
+    background-color: rgba(58, 58, 58, .9); 
+    /*background: #000;*/
+    /*line-height: 3.5;*/
+    padding: 20px 15px;
+    text-align: center;
+    font-size: 26px;
+}
 
-    .am-toast-notice-content .am-toast-text.am-toast-text-icon {
-        border-radius: 5px;
-        padding: 15px
-    }
+.am-toast-notice-content .am-toast-text.am-toast-text-icon {
+    border-radius: 5px;
+    padding: 15px
+}
 
-    .am-toast-notice-content .am-toast-text.am-toast-text-icon .am-toast-text-info {
-        margin-top: 6px
-    }
+.am-toast-notice-content .am-toast-text.am-toast-text-icon .am-toast-text-info {
+    margin-top: 6px
+}
 ```
 ```html
-    <div class="am-toast am-toast-mask" style="display: none;">
-        <div class="am-toast-notice-content">
-            <div class="am-toast-text" role="alert" aria-live="assertive">
-                <div class="msg">发送成功</div>
-            </div>
+<div class="am-toast am-toast-mask" style="display: none;">
+    <div class="am-toast-notice-content">
+        <div class="am-toast-text" role="alert" aria-live="assertive">
+            <div class="msg">发送成功</div>
         </div>
     </div>
+</div>
 ```
 ```js
-	/**
-	 弹窗提示
-	 */
-    function msg(text) {
-        $(".am-toast-mask").fadeIn(function () {
-            setTimeout(function () {
-                $(".am-toast-mask").fadeOut();
-            }, 1500);
-        });
-        $(".am-toast-mask .msg").html(text);
-    }
+/**
+弹窗提示
+*/
+function msg(text) {
+    $(".am-toast-mask").fadeIn(function () {
+        setTimeout(function () {
+            $(".am-toast-mask").fadeOut();
+        }, 1500);
+    });
+    $(".am-toast-mask .msg").html(text);
+}
 ```
 
-## $.extend Or $.fn.extend
+## Jquyer extend
 
 ```javascript
 jQuery.extend({
@@ -642,89 +642,198 @@ $( "input[type='checkbox']" ).check();
 
 ```javascript
 
-    var SHAKE_THRESHOLD = 1000;
-    var last_update = 0;
-    var x = y = z = last_x = last_y = last_z = 0;
-    function shakeInit() {
-        if (window.DeviceMotionEvent) {
-            window.addEventListener('devicemotion', deviceMotionHandler, false);
-        } else {
-            // alert('not support mobile event');
+var SHAKE_THRESHOLD = 1000;
+var last_update = 0;
+var x = y = z = last_x = last_y = last_z = 0;
+function shakeInit() {
+    if (window.DeviceMotionEvent) {
+        window.addEventListener('devicemotion', deviceMotionHandler, false);
+    } else {
+        // alert('not support mobile event');
+    }
+}
+function deviceMotionHandler(eventData) {
+    var acceleration = eventData.accelerationIncludingGravity;//eventData.acceleration;
+    var curTime = new Date().getTime();
+    if ((curTime - last_update) > 100) {
+        var diffTime = curTime - last_update;
+        last_update = curTime;
+        x = acceleration.x;
+        y = acceleration.y;
+        z = acceleration.z;
+        var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
+        if (speed > SHAKE_THRESHOLD) {
+            yaoyiyao();
         }
     }
-    function deviceMotionHandler(eventData) {
-        var acceleration = eventData.accelerationIncludingGravity;//eventData.acceleration;
-        var curTime = new Date().getTime();
-        if ((curTime - last_update) > 100) {
-            var diffTime = curTime - last_update;
-            last_update = curTime;
-            x = acceleration.x;
-            y = acceleration.y;
-            z = acceleration.z;
-            var speed = Math.abs(x + y + z - last_x - last_y - last_z) / diffTime * 10000;
-            if (speed > SHAKE_THRESHOLD) {
-                yaoyiyao();
-            }
-        }
-        last_x = x;
-        last_y = y;
-        last_z = z;
-    }
-    shakeInit();
+    last_x = x;
+    last_y = y;
+    last_z = z;
+}
+shakeInit();
 
-    // 安卓手机均可正常实现摇一摇，以下代码针对ios手机做授权处理
+// 安卓手机均可正常实现摇一摇，以下代码针对ios手机做授权处理
 
-    function iosGrantedTips() {
-        var ua = navigator.userAgent.toLowerCase(); //判断移动端设备，区分android，iphone，ipad和其它
-        if (ua.indexOf("like mac os x") > 0) { //判断苹果设备
-            // 正则判断手机系统版本
-            var reg = /os [\d._]*/gi;
-            var verinfo = ua.match(reg);
-            var version = (verinfo + "").replace(/[^0-9|_.]/ig, "").replace(/_/ig, ".");
-            // alert(version);
-            // var arr=version.split(".");
-            // console.log(arr[0]+"."+arr[1]+"."+arr[2]) //获取手机系统版本
-            // if (arr[0]>12&&arr[1]>2) {  //对13.3以后的版本处理,包括13.3
-            if (parseFloat(version) >= 13.3) {  //对13.3以后的版本处理,包括13.3
-                DeviceMotionEvent.requestPermission().then(permissionState => {
-                    if (permissionState === 'granted') { //已授权
-                        shakeInit() //摇一摇
-                    } else if (permissionState === 'denied') {// 打开的链接不是https开头
-                        // alert("当前IOS系统拒绝访问动作与方向。请退出微信，重新进入活动页面获取权限。")
-                    }
-                }).catch((err) => {
-                    // alert("用户未允许权限")
-                    //======这里可以防止重复授权，需要改动，因为获取权限需要点击事件才能触发，所以这里可以改成某个提示框===//
-                    console.log("由于IOS系统需要手动获取访问动作与方向的权限，为了保证摇一摇正常运行，请在访问提示中点击允许！")
-                    ios13granted();
-                });
-            } else {  //13.3以前的版本
-                // alert("苹果系统13.3以前的版本")
-            }
-        }
-    }
-    function ios13granted() {
-        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+function iosGrantedTips() {
+    var ua = navigator.userAgent.toLowerCase(); //判断移动端设备，区分android，iphone，ipad和其它
+    if (ua.indexOf("like mac os x") > 0) { //判断苹果设备
+        // 正则判断手机系统版本
+        var reg = /os [\d._]*/gi;
+        var verinfo = ua.match(reg);
+        var version = (verinfo + "").replace(/[^0-9|_.]/ig, "").replace(/_/ig, ".");
+        // alert(version);
+        // var arr=version.split(".");
+        // console.log(arr[0]+"."+arr[1]+"."+arr[2]) //获取手机系统版本
+        // if (arr[0]>12&&arr[1]>2) {  //对13.3以后的版本处理,包括13.3
+        if (parseFloat(version) >= 13.3) {  //对13.3以后的版本处理,包括13.3
             DeviceMotionEvent.requestPermission().then(permissionState => {
-                if (permissionState === 'granted') {
+                if (permissionState === 'granted') { //已授权
                     shakeInit() //摇一摇
                 } else if (permissionState === 'denied') {// 打开的链接不是https开头
                     // alert("当前IOS系统拒绝访问动作与方向。请退出微信，重新进入活动页面获取权限。")
                 }
-            }).catch((error) => {
-                // alert("请求设备方向或动作访问需要用户手势来提示")
-            })
-        } else {
-            // 处理常规的非iOS 13+设备
-            // alert("处理常规的非iOS 13+设备")
+            }).catch((err) => {
+                // alert("用户未允许权限")
+                //======这里可以防止重复授权，需要改动，因为获取权限需要点击事件才能触发，所以这里可以改成某个提示框===//
+                console.log("由于IOS系统需要手动获取访问动作与方向的权限，为了保证摇一摇正常运行，请在访问提示中点击允许！")
+                ios13granted();
+            });
+        } else {  //13.3以前的版本
+            // alert("苹果系统13.3以前的版本")
         }
     }
-    iosGrantedTips();
+}
+function ios13granted() {
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+        DeviceMotionEvent.requestPermission().then(permissionState => {
+            if (permissionState === 'granted') {
+                shakeInit() //摇一摇
+            } else if (permissionState === 'denied') {// 打开的链接不是https开头
+                // alert("当前IOS系统拒绝访问动作与方向。请退出微信，重新进入活动页面获取权限。")
+            }
+        }).catch((error) => {
+            // alert("请求设备方向或动作访问需要用户手势来提示")
+        })
+    } else {
+        // 处理常规的非iOS 13+设备
+        // alert("处理常规的非iOS 13+设备")
+    }
+}
+iosGrantedTips();
 
 
 
-	$("#gamestart").on("click",function(){
-        ios13granted(); // 默认调用获取用户权限
-    });
+$("#gamestart").on("click",function(){
+    ios13granted(); // 默认调用获取用户权限
+});
 ```
 
+##	海报生成
+
+```js
+/**
+ * 海报生成
+ * @param {type} json
+ * @returns {Promise}
+ */
+function CanvasToJpg(json) {
+    return new Promise(function (resolve, reject) {
+        var canvas = document.getElementById("posters");
+        //做一些异步操作
+        json2canvas.draw(json, '#posters', null, function () {
+            resolve(canvas.toDataURL("image/jpg"));
+        });
+    });
+}
+```
+
+##	 资源加载
+
+```js
+
+/**
+ * 资源加载
+ * @param {type} resources
+ * @returns {Promise}
+ */
+function pageLoading(resources) {
+    return new Promise(function (resolve, reject) {
+        var loading = new PxLoader();
+        for (var i = 0; i < resources.length; i++) {
+            loading.add(new PxLoaderImage(resources[i]));
+        }
+        loading.addProgressListener(function (e) {
+            var s = e.completedCount / e.totalCount * 100; // 加载进度
+            if (s >= 100) {
+                console.log('loading completed ');
+                resolve(); // 加载成功
+            }
+        });
+        loading.start();
+    });
+}
+```
+
+##	设置动画延迟
+
+```js
+
+/**
+ * 设置动画延迟
+ * delay 延迟时间
+ * duration 执行时间
+ */
+function setAnimated() {
+    $(".animated").each(function () {
+        var delay = $(this).attr('data-delay');
+        var duration = $(this).attr('data-duration');
+        if (delay) {
+            $(this).css({
+                'animation-delay': delay + 's'
+            });
+        }
+        if (duration) {
+            $(this).css({
+                'animation-duration': duration + 's'
+            });
+        }
+    });
+}
+```
+
+## 解决微信头像跨域
+
+```js
+
+/**
+ * 解决微信头像跨域
+ * @param {type} src
+ * @returns {Promise}
+ */
+function getAvatar(src) {
+    return new Promise(function (resolve) {
+        var canvas = document.createElement('canvas');
+        var contex = canvas.getContext('2d');
+        var img = new Image();
+        img.crossOrigin = ''; //添加时间戳
+        img.src = src + "?timeStamp=" + new Date();
+        if (src == "") {
+            resolve("");
+        }
+        img.onload = function () {
+            canvas.width = img.width;
+            canvas.height = img.height;
+            contex.clearRect(0, 0, img.width, img.height);
+            contex.drawImage(img, 0, 0); // 在刚刚裁剪的园上画图
+            resolve(canvas.toDataURL('image/jpg', 1));
+        };
+        img.onerror = function () {
+            resolve("");
+        };
+    });
+}
+```
+
+
+
+ 
