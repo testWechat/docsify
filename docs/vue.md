@@ -693,3 +693,11 @@ playerReadied(player) {
 }
 ```
 
+## vue-loader-v16
+
+>解决Error: Cannot find module ‘vue-loader-v16/package.json‘
+
+```bash
+cnpm i --save-dev vue-loader-v16
+```
+

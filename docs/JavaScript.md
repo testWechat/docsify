@@ -834,6 +834,33 @@ function getAvatar(src) {
 }
 ```
 
+## H5适配全屏
 
+```html
+ <video id="test_video" width="100%" height="100%" x-webkit-airplay="true" playsinline="true"
+ x5-video-player-type="h5-page" x5-video-player-fullscreen="true"
+ src="videolib_repo_2105_12_4x5gblk5e8f_SD_4x5gblk5e8f-mobile.mp4" preload="auto">
+ </video>
+```
 
- 
+ ```css
+.videoPage {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background-color: rgba(0, 0, 0, 1);
+    color: #ffffff;
+    top: 0px;
+    left: 0;
+    display: none;
+}
+#test_video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+}
+ ```
+
