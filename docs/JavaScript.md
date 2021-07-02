@@ -1,3 +1,131 @@
+## rem 适用于获取屏幕宽度等分设置 兼容flexible.js 库
+
+```js
+/*
+ * 适用于获取屏幕宽度等分设置 html 的 font-size 情况，比如 flexible.js 库
+ */
+(function (window, document) {
+    var tid;
+    window.addEventListener('resize', function () {
+        clearTimeout(tid);
+        tid = setTimeout(modifileRootRem, 300);
+    }, false);
+    window.addEventListener('pageshow', function (e) {
+        if (e.persisted) {
+            clearTimeout(tid);
+            tid = setTimeout(modifileRootRem, 300);
+        }
+    }, false);
+
+    // 计算最终 html font-size
+    function modifileRootRem() {
+        var root = document.documentElement
+        console.log(root.clientWidth / 10);
+        root.style.fontSize = root.clientWidth / 10 + 'px' // 【关键代码：差异补上】
+    }
+    if (typeof window.onload === 'function') {
+        var oldFun = window.onload
+        window.onload = function () {
+            oldFun()
+            modifileRootRem()
+        }
+    } else {
+        window.onload = modifileRootRem
+    }
+})(window, document);
+```
+
+## ios端兼容input光标高度
+> 问题详情描述：input输入框光标，在安卓手机上显示没有问题，但是在苹果手机上
+当点击输入的时候，光标的高度和父盒子的高度一样。例如下图，左图是正常所期待的输入框光标，右边是ios的input光标。
+
+<img src="../_media/912738961263.jpg"  />
+
+> 通常我们习惯用height属性设置行间的高度和line-height属性设置行间的距离（行高），当点击输入的时候，光标的高度就自动和父盒子的高度一样了。（谷歌浏览器的设计原则，还有一种可能就是当没有内容的时候光标的高度等于input的line-height的值，当有内容时，光标从input的顶端到文字的底部
+
+> 解决办法：高度height和行高line-height内容用padding撑开
+
+```css
+.content{
+      float: left;
+      box-sizing: border-box;
+      height: 88px;
+      width: calc(100% - 240px); 
+      .content-input{
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        color: #333333;
+        font-size: 28px;
+        //line-height: 88px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+      }
+} 
+```
+
+
+## ios端微信h5页面上下滑动时卡顿、页面缺失
+
+> 在ios端，上下滑动页面时，如果页面高度超出了一屏，就会出现明显的卡顿，页面有部分内容显示不全的情况，例如下图，右图是正常页面，边是ios上下滑动后，卡顿导致如左图下面部分丢失。
+
+![](../_media/123123153dsgdsfg.jpg)
+
+>解决办法：只需要在公共样式加入下面这行代码
+
+```css
+*{
+    -webkit-overflow-scrolling: touch;
+}
+```
+
+## ios键盘唤起，键盘收起以后页面不归位
+
+>输入内容，软键盘弹出，页面内容整体上移，但是键盘收起，页面内容不下滑
+
+```html
+<div class="list-warp">
+   <div class="title"><span>投·被保险人姓名</span></div>
+   <div class="content">
+     <input class="content-input" placeholder="请输入姓名"  
+     	v-model="peopleList.name" 
+     	@focus="changefocus()" 
+     	@blur.prevent="changeBlur()"/>    
+	</div>
+</div>
+<script>
+changeBlur(){
+      let u = navigator.userAgent, app = navigator.appVersion;
+      let isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/);
+      if(isIOS){
+        setTimeout(() => {
+          const scrollHeight = document.documentElement.scrollTop || document.body.scrollTop || 0
+          window.scrollTo(0, Math.max(scrollHeight - 1, 0))
+          }, 200)
+      }
+    } 
+</script>
+```
+## 安卓弹出的键盘遮盖文本框
+>安卓微信H5弹出软键盘后挡住input输入框，如下左图是期待唤起键盘的时候样子，右边是实际唤起键盘的样子
+
+![](../_media/1231asdjflksajlf.jpg)
+
+>解决办法：给input和textarea标签添加focus事件，如下，先判断是不是安卓手机下的操作，当然，可以不用判断机型，Document 对象属性和方法，setTimeout延时0.5秒，因为调用安卓键盘有一点迟钝，导致如果不延时处理的话，滚动就失效了
+
+
+```js
+changefocus(){
+  let u = navigator.userAgent, app = navigator.appVersion;
+  let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1;
+  if(isAndroid){
+    setTimeout(function() {
+     document.activeElement.scrollIntoViewIfNeeded();
+     document.activeElement.scrollIntoView();
+    }, 500);       
+  }
+}, 
+```
 ## js 封装php get方法
 
 ```js
