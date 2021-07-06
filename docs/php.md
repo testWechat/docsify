@@ -158,6 +158,28 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     ];
 });
 
+
+
+/**
+ * 管理员表 填充数据
+ * use App\Models\Admin;
+ * use Illuminate\Support\Str;
+ * use Faker\Generator as Faker;
+ */
+$factory->define(Admin::class, function (Faker $faker) {
+    static $password;
+    return [
+        'username' => 'admin',
+        'email' => $faker->unique()->safeEmail,
+        'password' => bcrypt('admin'),
+        'remember_token' => Str::random(10),
+    ];
+});
+
+// 执行填充 一条数据
+factory(App\Models\Admin::class,1)->create(); 
+
+
 php artisan tinker;
 
 // 创建 3 个 App\User 实例
