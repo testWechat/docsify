@@ -93,6 +93,43 @@ protected $guarded = ['price'];
 > 创建数据库表结构
 
 ```php
+/**
+ * 管理员表 填充数据
+ * use App\Models\Admin;
+ * use Illuminate\Support\Str;
+ * use Faker\Generator as Faker;
+ */
+$factory->define(Admin::class, function (Faker $faker) {
+    static $password;
+    return [
+        'username' => 'admin',
+        'email' => $faker->unique()->safeEmail,
+        'password' => bcrypt('admin'),
+        'remember_token' => Str::random(10),
+    ];
+});
+
+// 创建seeder 
+//	php artisan make:seeder UersTableSeeder
+
+public function run()
+{
+    factory(App\Models\Admin::class,1)->create();
+}
+
+//	在 `database/seeds` 下的 `DatabaseSeeder` 类中调用编写好的 `UersTableSeeder`,如：
+
+public function run()
+{
+     $this->call(App\Models\Admin::class);
+}
+
+
+php artisan migrate #安装数据表结构
+php artisan db:seed #初始系统数据
+```
+
+```php
 //	创建数据库表
 php artisan make:migration create_users_table
 //	数据库运行迁移
@@ -155,24 +192,6 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'email' => $faker->unique()->safeEmail,
         'password' => $password ?: $password = bcrypt('secret'),
         'remember_token' => str_random(10),
-    ];
-});
-
-
-
-/**
- * 管理员表 填充数据
- * use App\Models\Admin;
- * use Illuminate\Support\Str;
- * use Faker\Generator as Faker;
- */
-$factory->define(Admin::class, function (Faker $faker) {
-    static $password;
-    return [
-        'username' => 'admin',
-        'email' => $faker->unique()->safeEmail,
-        'password' => bcrypt('admin'),
-        'remember_token' => Str::random(10),
     ];
 });
 
