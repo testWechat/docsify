@@ -17,7 +17,7 @@
 > 创建项目 安装 laravel
 
 ```php
-composer create-project --prefer-dist laravel/laravel laravel "5.5.*"
+composer create-project --prefer-dist laravel/laravel laravel "5.8.*"
 ```
 
 > 安装代码提示
